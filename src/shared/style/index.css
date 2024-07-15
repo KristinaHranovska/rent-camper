@@ -1,0 +1,57 @@
+@import url('./_variables.css');
+@import url('./_colors.css');
+
+body {
+    font-family: 'Poppins', Gilroy, sans-serif;
+    font-weight: 400;
+
+    color: var(--dark-blue);
+    background-color: var(--white);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+@media screen and (min-width: 1440px) {
+    .position {
+        width: 100%;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0px;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
