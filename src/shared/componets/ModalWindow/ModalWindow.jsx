@@ -13,8 +13,8 @@ const ModalWindow = ({ isOpen, onClose, children }) => {
       ariaHideApp={false}
     >
       <button onClick={() => onClose()} className="modal-close-button">
-        <svg>
-          <use xlinkHref={`${sprite}#close`} />
+        <svg className="iconClose">
+          <use xlinkHref={`${sprite}#icon-close`} />
         </svg>
       </button>
       {children}

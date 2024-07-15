@@ -14,6 +14,8 @@ export default defineConfig({
       helpers: '/src/helpers',
       context: '/src/context',
       services: '/src/services',
+      components: '/src/components',
+      assets: '/src/assets',
     },
   }
 });
