@@ -1,17 +1,33 @@
 @import url('./_variables.css');
 @import url('./_colors.css');
 
+@font-face {
+    font-family: 'Inter';
+    src: url('./font/Inter-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./font/Inter-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./font/Inter-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Poppins', Gilroy, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
 
-    color: var(--dark-blue);
-    background-color: var(--white);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    color: var(--color-main-text);
+    background-color: var(--color-white);
 }
 
 @media screen and (min-width: 1440px) {
