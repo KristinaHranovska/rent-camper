@@ -1,0 +1,31 @@
+.buttonBase {
+    border-radius: 200px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    padding: 16px 60px;
+    transition: background-color var(--animation), border-color var(--animation);
+}
+
+.buttonMain {
+    color: var(--color-white);
+    background-color: var(--color-main-button);
+    border: transparent;
+}
+
+.buttonMain:hover,
+.buttonMain:active {
+    background-color: var(--color-main-button-hover);
+}
+
+.buttonLoad {
+    color: var(--color-main-text);
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.buttonLoad:hover,
+.buttonLoad:active {
+    border-color: var(--color-main-button-hover);
+}
