@@ -18,5 +18,5 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/rent-camper',
+  // base: '/rent-camper',
 });

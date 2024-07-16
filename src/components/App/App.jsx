@@ -1,8 +1,5 @@
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-// import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { getCar } from "@redux/favorite/operation";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,12 +13,6 @@ const FavoritePage = lazy(() => import("pages/FavoritePage/FavoritePage"));
 AOS.init();
 
 const App = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getCar());
-  // }, [dispatch]);
-
   return (
     <>
       <Routes>
