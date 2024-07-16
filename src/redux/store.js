@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import {
     persistReducer,
@@ -10,19 +10,21 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+import { carsReducer } from './favorite/slice';
 
-import { authReducer } from './auth/slice';
-import { setupAxiosInterceptors } from './auth/operation';
+const rootReducer = combineReducers({
+    items: carsReducer
+})
 
 const favoritePersistConfig = {
-    key: 'favorite',
+    key: 'cars',
     storage,
     whitelist: ['favorite'],
 };
 
 export const store = configureStore({
     reducer: {
-        favorite: persistReducer(favoritePersistConfig, authReducer),
+        favorite: persistReducer(favoritePersistConfig, rootReducer),
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
@@ -31,7 +33,5 @@ export const store = configureStore({
             },
         }),
 });
-
-setupAxiosInterceptors(store);
 
 export const persistor = persistStore(store);
