@@ -17,15 +17,14 @@ const rootReducer = combineReducers({
 })
 
 const favoritePersistConfig = {
-    key: 'cars',
+    key: 'camper',
     storage,
     whitelist: ['favorite'],
 };
 
 export const store = configureStore({
-    reducer: {
-        favorite: persistReducer(favoritePersistConfig, rootReducer),
-    },
+    reducer: persistReducer(favoritePersistConfig, rootReducer),
+
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

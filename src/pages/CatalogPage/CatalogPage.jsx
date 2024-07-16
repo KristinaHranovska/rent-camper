@@ -1,3 +1,5 @@
+import CamperCars from "components/CamperCars/CamperCars";
+import CamperFilters from "components/CamperFilters/CamperFilters";
 import { Helmet } from "react-helmet-async";
 
 const CatalogPage = () => {
@@ -6,7 +8,9 @@ const CatalogPage = () => {
       <Helmet>
         <title>Catalog</title>
       </Helmet>
-      <h2>CatalogPage</h2>
+
+      <CamperFilters />
+      <CamperCars />
     </>
   );
 };

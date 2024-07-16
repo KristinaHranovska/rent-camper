@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'https://66958fc24bd61d8314cba0e0.mockapi.io/';
 export const getCar = createAsyncThunk("camper/fetchAll",
     async (_, thunkAPI) => {
         try {
-            const respons = await axios.get('asvert');
+            const respons = await axios.get('advert');
             return respons.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
