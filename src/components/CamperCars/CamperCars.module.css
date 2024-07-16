@@ -1,4 +1,5 @@
-/* .carsList {
+.carsList {
     display: flex;
-    gap: 8px;
-} */
+    flex-direction: column;
+    gap: 32px;
+}

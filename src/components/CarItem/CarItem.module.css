@@ -1,4 +1,36 @@
+.cardCar {
+    border: 1px solid var(--color-light-text);
+    border-radius: 20px;
+    padding: 24px;
+}
+
 .categoriesList {
     display: flex;
     gap: 8px;
+}
+
+.iconHeart {
+    width: 24px;
+    height: 24px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.strokeStyle {
+    fill: var(--color-main-text);
+}
+
+.fillStyle {
+    stroke: var(--color-main-text);
+    fill: transparent;
+}
+
+.textDescription {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
