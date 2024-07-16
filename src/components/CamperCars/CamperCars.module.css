@@ -3,3 +3,14 @@
     flex-direction: column;
     gap: 32px;
 }
+
+.loadMore {
+    border: 1px solid var(--color-border-button);
+    transition: border-color var(--animation) color var(--animation);
+}
+
+.loadMore:hover,
+.loadMore:active {
+    border-color: var(--color-main-button-hover);
+    color: var(--color-main-text);
+}
