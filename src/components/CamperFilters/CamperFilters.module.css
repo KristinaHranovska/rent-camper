@@ -1,0 +1,9 @@
+.labelCheck {
+    cursor: pointer;
+
+}
+
+.labelCheck input[type="radio"]:checked+svg,
+.labelCheck input[type="checkbox"]:checked+svg {
+    border: 1px solid var(--color-main-button);
+}

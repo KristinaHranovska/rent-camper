@@ -5,7 +5,7 @@
     line-height: 1.5;
     letter-spacing: -0.01em;
     padding: 8px 32px;
-    transition: background-color var(--animation), color var(--animation), border-color var(--animation), transform var(--animation);
+    transition: background-color var(--animation), border-color var(--animation), transform var(--animation);
 }
 
 .buttonMain {
@@ -29,7 +29,6 @@
 .buttonLoad:hover,
 .buttonLoad:active {
     border-color: var(--color-main-button);
-    color: var(--color-white);
     transform: scale(1.05);
 }
 

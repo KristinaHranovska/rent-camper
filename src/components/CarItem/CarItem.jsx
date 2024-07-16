@@ -5,7 +5,7 @@ import style from "./CarItem.module.css";
 import { icons as sprite } from "shared/icons/index";
 
 const CarItem = ({ data }) => {
-  console.log(data);
+  // console.log(data);
 
   const capitalizeFirstLetter = (string) => {
     return string
