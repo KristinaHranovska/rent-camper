@@ -5,15 +5,16 @@ import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   return (
-    <>
+    <section>
       <Helmet>
         <title>Easily</title>
       </Helmet>
 
       <HomeVideo />
+
       <HomeTitle />
       <HomeSearch />
-    </>
+    </section>
   );
 };
 

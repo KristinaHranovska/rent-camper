@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { icons as sprite } from "../../icons/index";
+import { icons as sprite } from "shared/icons/index";
 import "./ModalWindow.css";
 
 const ModalWindow = ({ isOpen, onClose, children }) => {
