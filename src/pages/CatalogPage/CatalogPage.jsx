@@ -1,6 +1,8 @@
-import CamperCars from "components/CamperCars/CamperCars";
+// import CamperCars from "components/CamperCars/CamperCars";
 import CamperFilters from "components/CamperFilters/CamperFilters";
 import { Helmet } from "react-helmet-async";
+
+import style from "./CatalogPage.module.css";
 
 const CatalogPage = () => {
   return (
@@ -9,8 +11,10 @@ const CatalogPage = () => {
         <title>Catalog</title>
       </Helmet>
 
-      <CamperFilters />
-      <CamperCars />
+      <div className={style.container}>
+        <CamperFilters />
+        {/* <CamperCars /> */}
+      </div>
     </>
   );
 };

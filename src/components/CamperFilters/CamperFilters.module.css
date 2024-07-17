@@ -1,9 +1,104 @@
+.strokeStyle {
+    fill: var(--color-main-text);
+
+}
+
+.fillStyle {
+    stroke: var(--color-main-text);
+    fill: transparent;
+}
+
+.locationfield {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.labelLocation {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-light-text);
+}
+
+.blockInput {
+    position: relative;
+}
+
+.formInput {
+    border-radius: 10px;
+    padding: 18px;
+    padding-left: 48px;
+    border: 1px solid var(--color-input);
+    outline: transparent;
+    background-color: var(--color-input);
+    transition: border var(--animation);
+}
+
+.formInput:focus,
+.formInput:hover {
+    border-color: var(--color-stars);
+}
+
+.formInput:focus+.iconMap,
+.formInput:hover+.iconMap {
+    fill: var(--color-stars);
+}
+
+.errorName {
+    border-color: var(--color-main-button);
+}
+
+.errorSpan {
+    font-size: 12px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    color: var(--color-main-button);
+}
+
+.iconMap {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 18px;
+    height: 20px;
+
+    transition: fill var(--animation);
+}
+
 .labelCheck {
     cursor: pointer;
-
 }
 
 .labelCheck input[type="radio"]:checked+svg,
 .labelCheck input[type="checkbox"]:checked+svg {
     border: 1px solid var(--color-main-button);
+}
+
+.formInput:-webkit-autofill,
+.formInput:-webkit-autofill:hover,
+.formInput:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-main-text);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: var(--color-input);
+}
+
+.labelFilters {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.50;
+    color: var(--color-filter);
+
+    margin-bottom: 14px;
+}
+
+.formTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+
+    margin-bottom: 24px;
 }

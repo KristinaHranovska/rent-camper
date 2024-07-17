@@ -26,19 +26,29 @@ const CamperFilters = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Location</label>
-          <input
-            type="text"
-            name="location"
-            placeholder="Kyiv, Ukraine"
-            {...register("location")}
-          />
-          {errors.location && <p>{errors.location.message}</p>}
+        <div className={style.locationfield}>
+          <label className={style.labelLocation}>Location</label>
+          <div className={style.blockInput}>
+            <input
+              className={`${style.formInput} ${
+                errors.location && style.errorName
+              }`}
+              type="text"
+              name="location"
+              placeholder="City"
+              {...register("location")}
+            />
+            <svg className={`${style.iconMap} ${style.fillStyle}`}>
+              <use xlinkHref={`${sprite}#icon-map`} />
+            </svg>
+          </div>
+          {errors.location && (
+            <span className={style.errorSpan}>{errors.location.message}</span>
+          )}
         </div>
 
-        <label>Filters</label>
-        <h2>Vehicle equipment</h2>
+        <label className={style.labelFilters}>Filters</label>
+        <h2 className={style.formTitle}>Vehicle equipment</h2>
 
         <div>
           <label className={style.labelCheck}>
@@ -116,7 +126,7 @@ const CamperFilters = () => {
           </label>
         </div>
 
-        <h2>Vehicle type</h2>
+        <h2 className={style.formTitle}>Vehicle type</h2>
         <div>
           <label className={style.labelCheck}>
             <input
