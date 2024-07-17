@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import {
     persistReducer,
@@ -12,18 +12,14 @@ import {
 } from 'redux-persist';
 import { carsReducer } from './favorite/slice';
 
-const rootReducer = combineReducers({
-    items: carsReducer
-})
-
 const favoritePersistConfig = {
     key: 'camper',
     storage,
-    whitelist: ['favorite'],
+    whitelist: ['favoriteCar'],
 };
 
 export const store = configureStore({
-    reducer: persistReducer(favoritePersistConfig, rootReducer),
+    reducer: persistReducer(favoritePersistConfig, carsReducer),
 
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

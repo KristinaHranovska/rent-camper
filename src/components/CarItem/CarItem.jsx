@@ -3,9 +3,28 @@ import MainButton from "shared/componets/MainButton/MainButton";
 
 import style from "./CarItem.module.css";
 import { icons as sprite } from "shared/icons/index";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
+import { selectFavoriteCars } from "@redux/favorite/selectors";
 
 const CarItem = ({ data }) => {
-  // console.log(data);
+  const dispatch = useDispatch();
+  const favoriteItems = useSelector(selectFavoriteCars);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setIsActive(favoriteItems.some((item) => item._id === data._id));
+  }, [favoriteItems, data._id]);
+
+  const handleClick = () => {
+    if (isActive) {
+      dispatch(deleteFavorite(data._id));
+    } else {
+      dispatch(addFavorite(data));
+    }
+    setIsActive(!isActive);
+  };
 
   const capitalizeFirstLetter = (string) => {
     return string
@@ -23,7 +42,10 @@ const CarItem = ({ data }) => {
           <h2 className={style.carTitle}>{data.name}</h2>
           <p>&#8364;{data.price}.00</p>
         </div>
-        <svg className={`${style.iconHeart} ${style.fillStyle}`}>
+        <svg
+          className={`${style.iconHeart} ${isActive ? style.active : ""}`}
+          onClick={handleClick}
+        >
           <use xlinkHref={`${sprite}#icon-favorite`} />
         </svg>
       </div>

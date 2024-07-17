@@ -19,7 +19,7 @@
 
 .carTitle {
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.25;
 
     margin-bottom: 5px;
@@ -47,12 +47,35 @@
 
 .categoriesList {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .iconHeart {
     width: 24px;
     height: 24px;
+    stroke: var(--color-main-text);
+    fill: transparent;
+    transition: all var(--animation);
+}
+
+.active {
+    animation: like 0.5s 1;
+    fill: var(--color-main-button);
+    stroke: transparent;
+}
+
+@-webkit-keyframes like {
+    0% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
 }
 
 .icon {
@@ -85,7 +108,7 @@
     line-height: 1.5;
     color: var(--color-filter);
 
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 .carBtn {

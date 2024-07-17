@@ -5,6 +5,27 @@ import { getCar } from "./operation";
 const carsSlice = createSlice({
     name: 'camper',
     initialState: initialStateVan,
+
+    reducers: {
+        addFavorite: {
+            reducer(state, action) {
+                state.favoriteCar.push(action.payload)
+            },
+            prepare(values) {
+                return {
+                    payload: {
+                        ...values,
+                    }
+                }
+            }
+        },
+        deleteFavorite: (state, action) => {
+            state.favoriteCar = state.favoriteCar.filter(car =>
+                car._id !== action.payload
+            );
+        }
+    },
+
     extraReducers: (builder) => {
         builder
             .addCase(getCar.pending, (state) => {
@@ -23,3 +44,4 @@ const carsSlice = createSlice({
 })
 
 export const carsReducer = carsSlice.reducer;
+export const { addFavorite, deleteFavorite } = carsSlice.actions;

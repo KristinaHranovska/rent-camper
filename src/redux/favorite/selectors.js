@@ -1,3 +1,4 @@
-export const selectCars = (state) => state.items.cars;
-export const selectLoading = (state) => state.items.isLoading;
-export const selectError = (state) => state.items.error;
+export const selectCars = (state) => state.cars;
+export const selectFavoriteCars = (state) => state.favoriteCar;
+export const selectLoading = (state) => state.isLoading;
+export const selectError = (state) => state.error;
