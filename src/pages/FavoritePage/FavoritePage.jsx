@@ -1,3 +1,4 @@
+import Navigation from "components/Navigation/Navigation";
 import { Helmet } from "react-helmet-async";
 
 const FavoritePage = () => {
@@ -6,6 +7,7 @@ const FavoritePage = () => {
       <Helmet>
         <title>Favorite</title>
       </Helmet>
+      <Navigation />
       <h2>FavoritePage</h2>
     </>
   );

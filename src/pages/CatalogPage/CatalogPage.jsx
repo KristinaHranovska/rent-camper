@@ -3,6 +3,7 @@ import CamperFilters from "components/CamperFilters/CamperFilters";
 import { Helmet } from "react-helmet-async";
 
 import style from "./CatalogPage.module.css";
+import Navigation from "components/Navigation/Navigation";
 
 const CatalogPage = () => {
   return (
@@ -10,6 +11,8 @@ const CatalogPage = () => {
       <Helmet>
         <title>Catalog</title>
       </Helmet>
+
+      <Navigation />
 
       <section className={`${style.container} ${style.catalogContainer}`}>
         <CamperFilters />

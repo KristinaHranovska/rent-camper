@@ -1,0 +1,11 @@
+.navigation {
+    position: relative;
+    height: 60px;
+}
+
+.navigationList {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
