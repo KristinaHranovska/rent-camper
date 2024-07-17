@@ -100,6 +100,10 @@
     transition: border var(--animation);
 }
 
+.labelCheck:hover {
+    border: 1px solid var(--color-stars);
+}
+
 .hiddenInput {
     position: absolute;
     opacity: 0;
@@ -148,6 +152,7 @@
 }
 
 .labelRadio {
+    cursor: pointer;
     width: 90px;
     height: 70px;
     display: flex;
@@ -158,6 +163,11 @@
     border: 1px solid var(--color-light-text);
     border-radius: 10px;
     padding: 0 24px;
+    transition: border var(--animation);
+}
+
+.labelRadio:hover {
+    border: 1px solid var(--color-stars);
 }
 
 .radioLabelCheck {
@@ -171,6 +181,25 @@
 
 @media screen and (min-width: 768px) {
     .formThumb {
-        width: 360px;
+        position: sticky;
+        top: 0;
+        max-height: max-content;
+        height: 100%;
+        padding-top: 20px;
+        z-index: 1;
+    }
+
+    .labelCheck {
+        width: 90px;
+        padding: 14px 15px;
+    }
+
+    .labelRadio {
+        width: 100px;
+        height: 80px;
+    }
+
+    .equipmentTitle {
+        font-size: 14px;
     }
 }

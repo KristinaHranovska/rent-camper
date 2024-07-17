@@ -26,7 +26,7 @@ const CamperCars = () => {
   };
 
   return (
-    <>
+    <div className={style.container}>
       {visibleCars.length > 0 && (
         <ul className={style.carsList}>
           {visibleCars.map((cars) => (
@@ -44,7 +44,7 @@ const CamperCars = () => {
           onClick={handleLoadMore}
         />
       )}
-    </>
+    </div>
   );
 };
 

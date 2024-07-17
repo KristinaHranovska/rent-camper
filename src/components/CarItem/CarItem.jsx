@@ -40,7 +40,7 @@ const CarItem = ({ data }) => {
       <div className={style.carInfoThumb}>
         <div>
           <h2 className={style.carTitle}>{data.name}</h2>
-          <p>&#8364;{data.price}.00</p>
+          <p className={style.carPrice}>&#8364;{data.price}.00</p>
         </div>
         <svg
           className={`${style.iconHeart} ${isActive ? style.active : ""}`}
@@ -63,7 +63,7 @@ const CarItem = ({ data }) => {
           <svg className={`${style.icon} ${style.fillStyle}`}>
             <use xlinkHref={`${sprite}#icon-map`} />
           </svg>
-          <p>{data.location}</p>
+          <p className={style.carLocationText}>{data.location}</p>
         </div>
       </div>
 
@@ -73,7 +73,6 @@ const CarItem = ({ data }) => {
         <li>
           <Categories
             title={`${data.adults} adults`}
-            type="categories"
             svg="users"
             className={style.strokeStyle}
           />
@@ -81,7 +80,6 @@ const CarItem = ({ data }) => {
         <li>
           <Categories
             title={`${capitalizeFirstLetter(data.transmission)}`}
-            type="categories"
             svg="automatic"
             className={style.fillStyle}
           />
@@ -89,7 +87,6 @@ const CarItem = ({ data }) => {
         <li>
           <Categories
             title={`${capitalizeFirstLetter(data.engine)}`}
-            type="categories"
             svg="petrol"
             className={style.strokeStyle}
           />
@@ -99,7 +96,6 @@ const CarItem = ({ data }) => {
           <li>
             <Categories
               title={`Kitchen`}
-              type="categories"
               svg="kitchen"
               className={style.fillStyle}
             />
@@ -109,7 +105,6 @@ const CarItem = ({ data }) => {
           <li>
             <Categories
               title={`${data.details.beds} beds`}
-              type="categories"
               svg="bed"
               className={style.fillStyle}
             />
@@ -117,12 +112,7 @@ const CarItem = ({ data }) => {
         )}
         {data.details.airConditioner > 0 && (
           <li>
-            <Categories
-              title={`AC`}
-              type="categories"
-              svg="ac"
-              className={style.strokeStyle}
-            />
+            <Categories title={`AC`} svg="ac" className={style.strokeStyle} />
           </li>
         )}
       </ul>

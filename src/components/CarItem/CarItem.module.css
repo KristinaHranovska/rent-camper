@@ -14,20 +14,31 @@
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 20px
+    margin-bottom: 10px
 }
 
 .carTitle {
+    width: 210px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.25;
 
     margin-bottom: 5px;
 }
 
+.carPrice {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.25;
+}
+
 .carReviewsThumb {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
 
     margin-bottom: 5px;
@@ -40,9 +51,15 @@
 }
 
 .carReviewsText {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.5;
     text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+.carLocationText {
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .categoriesList {
@@ -51,6 +68,7 @@
 }
 
 .iconHeart {
+    cursor: pointer;
     width: 24px;
     height: 24px;
     stroke: var(--color-main-text);
@@ -64,7 +82,7 @@
     stroke: transparent;
 }
 
-@-webkit-keyframes like {
+@keyframes like {
     0% {
         transform: scale(1);
     }
@@ -84,8 +102,9 @@
 }
 
 .categoriesList {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 
     margin-bottom: 20px;
 }
@@ -104,7 +123,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     color: var(--color-filter);
 
@@ -114,4 +133,29 @@
 .carBtn {
     width: 100%;
     padding: 15px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .carTitle {
+        width: 300px;
+        font-size: 24px;
+    }
+
+    .carPrice {
+        font-size: 24px;
+    }
+
+    .carReviewsText {
+        font-size: 16px;
+    }
+
+    .carLocationText {
+        font-size: 16px;
+    }
+
+    .textDescription {
+        width: 350px;
+        font-size: 16px;
+    }
 }

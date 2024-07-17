@@ -2,17 +2,9 @@ import clsx from "clsx";
 import { icons as sprite } from "shared/icons/index";
 import s from "./Categories.module.css";
 
-const Categories = ({ title, svg, type, className }) => {
+const Categories = ({ title, svg, className }) => {
   return (
-    <div
-      className={clsx(
-        {
-          [s.categories]: type === "categories",
-          [s.filters]: type === "filters",
-        },
-        className && className
-      )}
-    >
+    <div className={clsx(s.categories, className && className)}>
       <svg className={s.icon}>
         <use xlinkHref={`${sprite}#icon-${svg}`} />
       </svg>
