@@ -16,9 +16,9 @@ const CarItem = ({ data }) => {
 
   return (
     <div className={style.cardCar}>
-      <img src={data.gallery[0]} alt={data.name} />
+      <img className={style.cardImg} src={data.gallery[0]} alt={data.name} />
 
-      <div>
+      <div className={style.carInfoThumb}>
         <h2>{data.name}</h2>
         <p>&#8364;{data.price}.00</p>
         <svg className={`${style.iconHeart} ${style.fillStyle}`}>
@@ -41,7 +41,7 @@ const CarItem = ({ data }) => {
 
       <p className={style.textDescription}>{data.description}</p>
 
-      <ul className={style.categoriesList}>
+      {/* <ul className={style.categoriesList}>
         <li>
           <Categories
             title={`${data.adults} adults`}
@@ -97,7 +97,7 @@ const CarItem = ({ data }) => {
             />
           </li>
         )}
-      </ul>
+      </ul> */}
 
       <MainButton title="Show more" btnType="main" />
     </div>

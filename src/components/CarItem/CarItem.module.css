@@ -4,6 +4,11 @@
     padding: 24px;
 }
 
+.cardImg {
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
 .categoriesList {
     display: flex;
     gap: 8px;

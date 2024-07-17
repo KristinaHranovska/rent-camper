@@ -5,8 +5,25 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperFilters.module.css";
 import { icons as sprite } from "shared/icons/index";
+import { useState } from "react";
 
 const CamperFilters = () => {
+  const [checkedItems, setCheckedItems] = useState({});
+  const [radioItems, setRadioItems] = useState({});
+
+  const handleCheckboxChange = (event) => {
+    const { value } = event.target;
+    setCheckedItems((prevCheckedItems) => ({
+      ...prevCheckedItems,
+      [value]: !prevCheckedItems[value],
+    }));
+  };
+
+  const handleRadioChange = (event) => {
+    const { value } = event.target;
+    setRadioItems({ [value]: true });
+  };
+
   const {
     register,
     handleSubmit,
@@ -23,8 +40,20 @@ const CamperFilters = () => {
     reset();
   };
 
+  const formatTitle = (title) => {
+    if (title.length === 2) {
+      return title.toUpperCase();
+    }
+    const words = title.split(/[-\s]/);
+    const formattedWords = words.map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1)
+    );
+
+    return formattedWords.join(" ");
+  };
+
   return (
-    <>
+    <div className={style.formThumb}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.locationfield}>
           <label className={style.labelLocation}>Location</label>
@@ -48,132 +77,70 @@ const CamperFilters = () => {
         </div>
 
         <label className={style.labelFilters}>Filters</label>
+
         <h2 className={style.formTitle}>Vehicle equipment</h2>
 
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              className={style.formInput}
-              name="equipment"
-              type="checkbox"
-              value="ac"
-              {...register("equipment")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-ac`} />
-            </svg>
-          </label>
-        </div>
-
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="equipment"
-              type="checkbox"
-              value="automatic"
-              {...register("equipment")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-automatic`} />
-            </svg>
-          </label>
-        </div>
-
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="equipment"
-              type="checkbox"
-              value="kitchen"
-              {...register("equipment")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-kitchen`} />
-            </svg>
-          </label>
-        </div>
-
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="equipment"
-              type="checkbox"
-              value="tv"
-              {...register("equipment")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-tv`} />
-            </svg>
-          </label>
-        </div>
-
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="equipment"
-              type="checkbox"
-              value="shower"
-              {...register("equipment")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-shower`} />
-            </svg>
-          </label>
-        </div>
+        <ul className={style.equipment}>
+          {["conditioner", "automatic", "kitchen", "tv", "shower"].map(
+            (item) => (
+              <li key={item}>
+                <label
+                  className={`${style.labelCheck} ${
+                    checkedItems[item] ? style.checkedLabelCheck : ""
+                  }`}
+                >
+                  <input
+                    name="equipment"
+                    type="checkbox"
+                    value={item}
+                    {...register("equipment")}
+                    className={style.hiddenInput}
+                    onChange={handleCheckboxChange}
+                  />
+                  <svg className={`${style.iconEquipment} ${style.fillStyle}`}>
+                    <use xlinkHref={`${sprite}#icon-${item}`} />
+                  </svg>
+                  <h3 className={style.equipmentTitle}>{formatTitle(item)}</h3>
+                </label>
+              </li>
+            )
+          )}
+        </ul>
 
         <h2 className={style.formTitle}>Vehicle type</h2>
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="type"
-              type="radio"
-              value="van"
-              {...register("type")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-van`} />
-            </svg>
-          </label>
-        </div>
+        <ul className={style.equipment}>
+          {["van", "fully-integrated", "alcove"].map((item) => (
+            <li key={item}>
+              <label
+                className={`${style.labelRadio} ${
+                  radioItems[item] ? style.radioLabelCheck : ""
+                }`}
+              >
+                <input
+                  name="type"
+                  type="radio"
+                  value={item}
+                  {...register("type")}
+                  className={style.hiddenInput}
+                  onChange={handleRadioChange}
+                />
+                <svg className={`${style.iconType} ${style.strokeStyle}`}>
+                  <use xlinkHref={`${sprite}#icon-${item}`} />
+                </svg>
+                <h3 className={style.equipmentTitle}>{formatTitle(item)}</h3>
+              </label>
+            </li>
+          ))}
+        </ul>
 
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="type"
-              type="radio"
-              value="fully"
-              {...register("type")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-fully-integrated`} />
-            </svg>
-          </label>
-        </div>
-
-        <div>
-          <label className={style.labelCheck}>
-            <input
-              name="type"
-              type="radio"
-              value="alcove"
-              {...register("type")}
-              style={{ display: "none" }}
-            />
-            <svg className="icon">
-              <use xlinkHref={`${sprite}#icon-alcove`} />
-            </svg>
-          </label>
-        </div>
-        <MainButton type="submit" title="Search" btnType="main" />
+        <MainButton
+          type="submit"
+          title="Search"
+          btnType="main"
+          className={style.searchBtn}
+        />
       </form>
-    </>
+    </div>
   );
 };
 
