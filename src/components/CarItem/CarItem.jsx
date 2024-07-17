@@ -19,29 +19,35 @@ const CarItem = ({ data }) => {
       <img className={style.cardImg} src={data.gallery[0]} alt={data.name} />
 
       <div className={style.carInfoThumb}>
-        <h2>{data.name}</h2>
-        <p>&#8364;{data.price}.00</p>
+        <div>
+          <h2 className={style.carTitle}>{data.name}</h2>
+          <p>&#8364;{data.price}.00</p>
+        </div>
         <svg className={`${style.iconHeart} ${style.fillStyle}`}>
           <use xlinkHref={`${sprite}#icon-favorite`} />
         </svg>
       </div>
 
-      <div>
-        <svg className={`${style.icon}`}>
-          <use xlinkHref={`${sprite}#icon-star`} />
-        </svg>
-        <p>
-          {data.rating}({data.reviews.length} Reviews)
-        </p>
-        <svg className={`${style.icon} ${style.fillStyle}`}>
-          <use xlinkHref={`${sprite}#icon-map`} />
-        </svg>
-        <p>{data.location}</p>
+      <div className={style.carReviewsThumb}>
+        <div className={style.carThumb}>
+          <svg className={`${style.icon}`}>
+            <use xlinkHref={`${sprite}#icon-star`} />
+          </svg>
+          <p className={style.carReviewsText}>
+            {data.rating}({data.reviews.length} Reviews)
+          </p>
+        </div>
+        <div className={style.carThumb}>
+          <svg className={`${style.icon} ${style.fillStyle}`}>
+            <use xlinkHref={`${sprite}#icon-map`} />
+          </svg>
+          <p>{data.location}</p>
+        </div>
       </div>
 
       <p className={style.textDescription}>{data.description}</p>
 
-      {/* <ul className={style.categoriesList}>
+      <ul className={style.categoriesList}>
         <li>
           <Categories
             title={`${data.adults} adults`}
@@ -97,9 +103,9 @@ const CarItem = ({ data }) => {
             />
           </li>
         )}
-      </ul> */}
+      </ul>
 
-      <MainButton title="Show more" btnType="main" />
+      <MainButton title="Show more" btnType="main" className={style.carBtn} />
     </div>
   );
 };
