@@ -166,3 +166,50 @@
         font-size: 16px;
     }
 }
+
+@media screen and (min-width: 1440px) {
+    .cardCar {
+        display: flex;
+        gap: 24px;
+    }
+
+    .cardImg {
+        width: 290px;
+        object-fit: cover;
+        object-position: 60% 50%;
+        margin-bottom: 0;
+    }
+
+    .carInfoThumb {
+        gap: 10px;
+    }
+
+    .carInfo {
+        width: 100%;
+        display: flex;
+    }
+
+    .carTitle {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .carReviewsThumb {
+        justify-content: flex-start;
+        margin-bottom: 24px;
+    }
+
+    .textDescription {
+        width: 540px;
+        margin-bottom: 24px;
+    }
+
+    .categoriesList {
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom: 24px;
+    }
+
+    .carBtn {
+        width: 166px;
+    }
+}
