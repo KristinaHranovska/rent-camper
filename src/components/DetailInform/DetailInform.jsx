@@ -1,10 +1,20 @@
 import DetailMainInform from "components/DetailMainInform/DetailMainInform";
 import CustomScrollWrapper from "shared/componets/CustomScrollWrapper/CustomScrollWrapper";
-import style from "./DetailInform.module.css";
+import CarFeatures from "components/CarFeatures/CarFeatures";
+import CarReviews from "components/CarReviews/CarReviews";
 
+import style from "./DetailInform.module.css";
 import { icons as sprite } from "shared/icons/index";
+import { useState } from "react";
+import clsx from "clsx";
 
 const DetailInform = ({ db }) => {
+  const [activeComponent, setActiveComponent] = useState("features");
+
+  const handleLinkClick = (component) => {
+    setActiveComponent(component);
+  };
+
   return (
     <>
       <div className={style.mainInfoThumb}>
@@ -33,6 +43,30 @@ const DetailInform = ({ db }) => {
       <CustomScrollWrapper>
         <div className={style.container}>
           <DetailMainInform data={db} />
+
+          <nav>
+            <ul className={style.addInfromList}>
+              <li
+                className={clsx(style.addInfromItem, {
+                  [style.active]: activeComponent === "features",
+                })}
+                onClick={() => handleLinkClick("features")}
+              >
+                Features
+              </li>
+              <li
+                className={clsx(style.addInfromItem, {
+                  [style.active]: activeComponent === "reviews",
+                })}
+                onClick={() => handleLinkClick("reviews")}
+              >
+                Reviews
+              </li>
+            </ul>
+          </nav>
+
+          {activeComponent === "features" && <CarFeatures />}
+          {activeComponent === "reviews" && <CarReviews />}
         </div>
       </CustomScrollWrapper>
     </>

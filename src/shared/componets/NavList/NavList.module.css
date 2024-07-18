@@ -56,6 +56,13 @@
         position: static;
         transform: none;
     }
+
+    .navLink:hover::before,
+    .navLink:active::before,
+    .navLink:hover::after,
+    .navLink:active::after {
+        transform: scaleX(1);
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -66,12 +73,5 @@
     .navLink::before,
     .navLink::after {
         height: 2px;
-    }
-
-    .navLink:hover::before,
-    .navLink:active::before,
-    .navLink:hover::after,
-    .navLink:active::after {
-        transform: scaleX(1);
     }
 }

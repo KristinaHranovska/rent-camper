@@ -1,3 +1,7 @@
+.blockWrap {
+    margin-bottom: 24px;
+}
+
 .listImages {
     display: flex;
     flex-direction: column;
@@ -22,6 +26,9 @@
 }
 
 @media screen and (min-width: 768px) {
+    .blockWrap {
+        margin-bottom: 30px;
+    }
 
     .listImages {
         flex-direction: row;
@@ -36,6 +43,10 @@
 }
 
 @media screen and (min-width: 1440px) {
+    .blockWrap {
+        margin-bottom: 44px;
+    }
+
     .listImages {
         justify-content: center;
     }

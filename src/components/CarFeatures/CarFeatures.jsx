@@ -1,5 +1,9 @@
 const CarFeatures = () => {
-  return <></>;
+  return (
+    <>
+      <h2>CarFeatures</h2>
+    </>
+  );
 };
 
 export default CarFeatures;
