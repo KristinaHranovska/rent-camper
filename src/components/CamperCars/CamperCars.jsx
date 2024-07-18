@@ -10,7 +10,6 @@ import CarItem from "components/CarItem/CarItem";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
-import { Bars } from "react-loader-spinner";
 
 const CamperCars = () => {
   const dispatch = useDispatch();
@@ -57,15 +56,7 @@ const CamperCars = () => {
     <div className={style.container}>
       {isLoading ? (
         <div className={style.containerLoader}>
-          <Bars
-            height="80"
-            width="80"
-            color="#FFC531"
-            ariaLabel="bars-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+          <img src={logo} alt="pictures" />
         </div>
       ) : (
         <>
