@@ -74,10 +74,10 @@ const BookForm = () => {
                 selected={selectedDate}
                 onChange={handleDateChange}
                 placeholderText="Booking date"
-                className={`${style.formInput} ${style.datePickerInput}`}
+                className={`${style.formInput}`}
                 dateFormat="dd/MM/yyyy"
               />
-              <svg className={`${style.iconCalendar} ${style.fillStyle}`}>
+              <svg className={`${style.iconCalendar}`}>
                 <use xlinkHref={`${sprite}#icon-calendar`} />
               </svg>
             </div>

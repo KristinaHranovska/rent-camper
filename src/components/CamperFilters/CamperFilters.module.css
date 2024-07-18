@@ -66,6 +66,7 @@
     left: 18px;
     width: 18px;
     height: 20px;
+    transition: fill var(--animation);
 }
 
 .iconClean {

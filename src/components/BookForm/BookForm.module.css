@@ -8,7 +8,6 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 1.2;
-
     margin-bottom: 8px;
 }
 
@@ -16,7 +15,6 @@
     font-size: 14px;
     line-height: 1.5;
     color: var(--color-filter);
-
     margin-bottom: 24px;
 }
 
@@ -66,11 +64,9 @@
     pointer-events: none;
     width: 24px;
     height: 24px;
-}
-
-.fillStyle {
     stroke: var(--color-main-text);
     fill: transparent;
+    transition: fill var(--animation);
 }
 
 .formLabel {
@@ -122,7 +118,6 @@
 
     .formText {
         font-size: 16px;
-
         margin-bottom: 24px;
     }
 }
