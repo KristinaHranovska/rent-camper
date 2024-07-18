@@ -12,11 +12,12 @@ const CatalogPage = () => {
         <title>Catalog</title>
       </Helmet>
 
-      <Navigation />
-
-      <section className={`${style.container} ${style.catalogContainer}`}>
-        <CamperFilters />
-        <CamperCars />
+      <section className={`${style.container} `}>
+        <Navigation />
+        <div className={style.catalogContainer}>
+          <CamperFilters />
+          <CamperCars />
+        </div>
       </section>
     </>
   );

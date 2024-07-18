@@ -5,9 +5,12 @@ import Menu from "components/Menu/Menu";
 import style from "./Navigation.module.css";
 import { default as logo } from "assets/images/logo.webp";
 import { NavLink } from "react-router-dom";
+import { useMedia } from "hooks/useMedia";
+import NavList from "shared/componets/NavList/NavList";
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isMobile, isDesktop, isTablet } = useMedia();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "unset";
@@ -25,8 +28,14 @@ const Navigation = () => {
       <NavLink className={style.navLink} to="/">
         <img className={style.logo} src={logo} alt="logo" />
       </NavLink>
-      <Hamburger active={menuOpen} toggleMenu={toggleMenu} />
-      <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
+
+      {isMobile && (
+        <>
+          <Hamburger active={menuOpen} toggleMenu={toggleMenu} />
+          <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
+        </>
+      )}
+      {(isDesktop || isTablet) && <NavList />}
     </nav>
   );
 };

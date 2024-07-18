@@ -1,6 +1,5 @@
 .strokeStyle {
     fill: var(--color-main-text);
-
 }
 
 .fillStyle {
@@ -188,7 +187,7 @@
         top: -30px;
         max-height: max-content;
         height: 100%;
-        padding-top: 30px;
+        padding-top: 10px;
         z-index: 1;
     }
 
