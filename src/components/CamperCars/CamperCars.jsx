@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCar } from "@redux/favorite/operation";
-import { selectCars, selectFilters } from "@redux/favorite/selectors";
+import {
+  selectCars,
+  selectFilters,
+  selectLoading,
+} from "@redux/favorite/selectors";
 import CarItem from "components/CarItem/CarItem";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
+import { default as logo } from "assets/images/logo.webp";
+import { Bars } from "react-loader-spinner";
 
 const CamperCars = () => {
   const dispatch = useDispatch();
   const camperCars = useSelector(selectCars);
   const filters = useSelector(selectFilters);
-
-  // console.log(filters);
-  // console.log(camperCars);
+  const isLoading = useSelector(selectLoading);
 
   const [visibleCars, setVisibleCars] = useState([]);
   const [carsToShow, setCarsToShow] = useState(4);
@@ -51,22 +55,46 @@ const CamperCars = () => {
 
   return (
     <div className={style.container}>
-      {visibleCars.length > 0 && (
-        <ul className={style.carsList}>
-          {visibleCars.map((cars) => (
-            <li className={style.carItem} key={cars._id}>
-              <CarItem data={cars} />
-            </li>
-          ))}
-        </ul>
-      )}
-      {visibleCars.length < camperCars.length && (
-        <MainButton
-          title="Load more"
-          btnType="load"
-          className={style.loadMore}
-          onClick={handleLoadMore}
-        />
+      {isLoading ? (
+        <div className={style.containerLoader}>
+          <Bars
+            height="80"
+            width="80"
+            color="#FFC531"
+            ariaLabel="bars-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      ) : (
+        <>
+          {visibleCars.length > 0 ? (
+            <ul className={style.carsList}>
+              {visibleCars.map((cars) => (
+                <li className={style.carItem} key={cars._id}>
+                  <CarItem data={cars} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className={style.notFoundtBlock}>
+              <p className={style.notFound}>
+                Unfortunately, nothing was found for your request
+              </p>
+              <img src={logo} alt="pictures" />
+            </div>
+          )}
+          {visibleCars.length < camperCars.length &&
+            visibleCars.length >= 4 && (
+              <MainButton
+                title="Load more"
+                btnType="load"
+                className={style.loadMore}
+                onClick={handleLoadMore}
+              />
+            )}
+        </>
       )}
     </div>
   );

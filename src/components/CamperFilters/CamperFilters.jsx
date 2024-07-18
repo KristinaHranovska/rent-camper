@@ -30,7 +30,7 @@ const CamperFilters = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    resetField,
     formState: { errors },
   } = useForm({
     defaultValues: formValuesVehicle,
@@ -53,7 +53,8 @@ const CamperFilters = () => {
         form: Object.keys(radioItems).find((key) => radioItems[key]),
       })
     );
-    reset();
+
+    resetField("location");
     setCheckedItems({});
     setRadioItems({});
   };
@@ -70,6 +71,10 @@ const CamperFilters = () => {
       shower: "Shower",
     };
     return titles[title] || title;
+  };
+
+  const cleanInput = () => {
+    resetField("location");
   };
 
   return (
@@ -89,6 +94,13 @@ const CamperFilters = () => {
             />
             <svg className={`${style.iconMap} ${style.fillStyle}`}>
               <use xlinkHref={`${sprite}#icon-map`} />
+            </svg>
+
+            <svg
+              className={`${style.iconClean} ${style.fillStyle}`}
+              onClick={cleanInput}
+            >
+              <use xlinkHref={`${sprite}#icon-close`} />
             </svg>
           </div>
           {errors.location && (
