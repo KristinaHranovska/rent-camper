@@ -3,4 +3,9 @@ export const initialStateVan = {
     isLoading: false,
     error: null,
     favoriteCar: [],
+    filters: {
+        location: '',
+        details: [],
+        form: ''
+    }
 }

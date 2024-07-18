@@ -6,8 +6,11 @@ import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperFilters.module.css";
 import { icons as sprite } from "shared/icons/index";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setFilters } from "@redux/favorite/slice";
 
 const CamperFilters = () => {
+  const dispatch = useDispatch();
   const [checkedItems, setCheckedItems] = useState({});
   const [radioItems, setRadioItems] = useState({});
 
@@ -36,20 +39,37 @@ const CamperFilters = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    const selectedDetails = Object.keys(checkedItems).reduce((acc, key) => {
+      if (checkedItems[key]) {
+        acc[key] = true;
+      }
+      return acc;
+    }, {});
+
+    dispatch(
+      setFilters({
+        location: data.location,
+        details: selectedDetails,
+        form: Object.keys(radioItems).find((key) => radioItems[key]),
+      })
+    );
     reset();
+    setCheckedItems({});
+    setRadioItems({});
   };
 
   const formatTitle = (title) => {
-    if (title.length === 2) {
-      return title.toUpperCase();
-    }
-    const words = title.split(/[-\s]/);
-    const formattedWords = words.map(
-      (word) => word.charAt(0).toUpperCase() + word.slice(1)
-    );
-
-    return formattedWords.join(" ");
+    const titles = {
+      panelTruck: "Van",
+      fullyIntegrated: "Fully Integrated",
+      alcove: "Alcove",
+      airConditioner: "Conditioner",
+      transmission: "Automatic",
+      kitchen: "Kitchen",
+      tv: "TV",
+      shower: "Shower",
+    };
+    return titles[title] || title;
   };
 
   return (
@@ -81,7 +101,7 @@ const CamperFilters = () => {
         <h2 className={style.formTitle}>Vehicle equipment</h2>
 
         <ul className={style.equipment}>
-          {["conditioner", "automatic", "kitchen", "tv", "shower"].map(
+          {["airConditioner", "transmission", "kitchen", "tv", "shower"].map(
             (item) => (
               <li key={item}>
                 <label
@@ -90,10 +110,10 @@ const CamperFilters = () => {
                   }`}
                 >
                   <input
-                    name="equipment"
+                    name="details"
                     type="checkbox"
                     value={item}
-                    {...register("equipment")}
+                    {...register("details")}
                     className={style.hiddenInput}
                     onChange={handleCheckboxChange}
                   />
@@ -109,7 +129,7 @@ const CamperFilters = () => {
 
         <h2 className={style.formTitle}>Vehicle type</h2>
         <ul className={style.equipment}>
-          {["van", "fully-integrated", "alcove"].map((item) => (
+          {["panelTruck", "fullyIntegrated", "alcove"].map((item) => (
             <li key={item}>
               <label
                 className={`${style.labelRadio} ${
@@ -117,10 +137,10 @@ const CamperFilters = () => {
                 }`}
               >
                 <input
-                  name="type"
+                  name="form"
                   type="radio"
                   value={item}
-                  {...register("type")}
+                  {...register("form")}
                   className={style.hiddenInput}
                   onChange={handleRadioChange}
                 />

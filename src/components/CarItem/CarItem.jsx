@@ -80,8 +80,8 @@ const CarItem = ({ data }) => {
           </li>
           <li>
             <Categories
-              title={`${capitalizeFirstLetter(data.transmission)}`}
-              svg="automatic"
+              title={`${capitalizeFirstLetter(data.details.transmission)}`}
+              svg="transmission"
               className={style.fillStyle}
             />
           </li>
