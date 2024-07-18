@@ -27,6 +27,9 @@ const carsSlice = createSlice({
         setFilters: (state, action) => {
             state.filters = action.payload;
         },
+        resetFilters: (state) => {
+            state.filters = initialStateVan.filters;
+        }
     },
 
     extraReducers: (builder) => {
@@ -47,4 +50,4 @@ const carsSlice = createSlice({
 })
 
 export const carsReducer = carsSlice.reducer;
-export const { addFavorite, deleteFavorite, setFilters } = carsSlice.actions;
+export const { addFavorite, deleteFavorite, setFilters, resetFilters } = carsSlice.actions;

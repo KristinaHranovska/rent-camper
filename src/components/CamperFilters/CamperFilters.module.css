@@ -184,8 +184,13 @@
     border: 1px solid var(--color-main-button);
 }
 
+.containerBtn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .searchBtn {
-    width: 100%;
     padding: 15px;
 }
 
@@ -243,6 +248,10 @@
     .iconType {
         width: 40px;
         height: 28px;
+    }
+
+    .containerBtn {
+        flex-direction: row;
     }
 
     .searchBtn {

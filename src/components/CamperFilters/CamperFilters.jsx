@@ -6,11 +6,13 @@ import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperFilters.module.css";
 import { icons as sprite } from "shared/icons/index";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setFilters } from "@redux/favorite/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { resetFilters, setFilters } from "@redux/favorite/slice";
+import { selectFilters } from "@redux/favorite/selectors";
 
 const CamperFilters = () => {
   const dispatch = useDispatch();
+  const filters = useSelector(selectFilters);
   const [checkedItems, setCheckedItems] = useState({});
   const [radioItems, setRadioItems] = useState({});
 
@@ -54,6 +56,13 @@ const CamperFilters = () => {
       })
     );
 
+    resetField("location");
+    setCheckedItems({});
+    setRadioItems({});
+  };
+
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
     resetField("location");
     setCheckedItems({});
     setRadioItems({});
@@ -165,12 +174,23 @@ const CamperFilters = () => {
           ))}
         </ul>
 
-        <MainButton
-          type="submit"
-          title="Search"
-          btnType="main"
-          className={style.searchBtn}
-        />
+        <div className={style.containerBtn}>
+          <MainButton
+            type="submit"
+            title="Search"
+            btnType="main"
+            className={style.searchBtn}
+          />
+          {filters.location && (
+            <MainButton
+              type="button"
+              title="Reset"
+              btnType="load"
+              className={style.searchBtn}
+              onClick={handleResetFilters}
+            />
+          )}
+        </div>
       </form>
     </div>
   );
