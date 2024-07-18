@@ -105,7 +105,7 @@ const Features = ({ db }) => {
     },
   ];
   return (
-    <>
+    <div>
       <ul className={style.categoriesList}>
         {categoriesData.map(
           (category, index) =>
@@ -153,7 +153,7 @@ const Features = ({ db }) => {
           <p className={style.detailsText}>{db.consumption}</p>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

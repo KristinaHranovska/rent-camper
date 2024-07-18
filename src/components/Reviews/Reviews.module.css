@@ -1,5 +1,9 @@
-.reviewItem {
-    margin-bottom: 24px;
+.reviewsList {
+    height: 525px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .nameBlock {
