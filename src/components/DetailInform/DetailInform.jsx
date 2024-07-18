@@ -65,8 +65,8 @@ const DetailInform = ({ db }) => {
             </ul>
           </nav>
 
-          {activeComponent === "features" && <CarFeatures />}
-          {activeComponent === "reviews" && <CarReviews />}
+          {activeComponent === "features" && <CarFeatures data={db} />}
+          {activeComponent === "reviews" && <CarReviews data={db} />}
         </div>
       </CustomScrollWrapper>
     </>

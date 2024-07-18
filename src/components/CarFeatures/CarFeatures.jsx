@@ -1,4 +1,4 @@
-const CarFeatures = () => {
+const CarFeatures = ({ data }) => {
   return (
     <>
       <h2>CarFeatures</h2>

@@ -1,0 +1,14 @@
+.rating {
+    display: flex;
+    gap: 2px;
+}
+
+.star {
+    fill: var(--color-categories);
+    stroke: transparent;
+    stroke-width: 2;
+}
+
+.star.filled {
+    fill: var(--color-stars);
+}

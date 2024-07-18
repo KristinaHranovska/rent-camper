@@ -1,9 +1,11 @@
 // import style from './CarReviews.module.css';
 
-const CarReviews = () => {
+import Reviews from "components/Reviews/Reviews";
+
+const CarReviews = ({ data }) => {
   return (
     <>
-      <h2>CarReviews</h2>
+      <Reviews db={data} />
     </>
   );
 };
