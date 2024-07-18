@@ -1,0 +1,104 @@
+.mainInfoThumb {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.carTitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+
+.carReviewsThumb {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.carThumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.carReviewsText {
+    font-size: 12px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+.carLocationText {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.fillStyle {
+    stroke: var(--color-main-text);
+    fill: transparent;
+}
+
+.carPrice {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.25;
+}
+
+@media screen and (min-width: 768px) {
+    .carTitle {
+        font-size: 20px;
+    }
+
+    .carPrice {
+        font-size: 18px;
+    }
+
+    .carReviewsText {
+        font-size: 14px;
+    }
+
+    .carLocationText {
+        font-size: 14px;
+    }
+
+    .container {
+        height: 350px;
+        padding-right: calc(15px + 6px);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .mainInfoThumb {
+        margin-bottom: 24px;
+    }
+
+    .carTitle {
+        font-size: 24px;
+    }
+
+    .carPrice {
+        font-size: 24px;
+    }
+
+    .carReviewsText {
+        font-size: 16px;
+    }
+
+    .carLocationText {
+        font-size: 16px;
+    }
+
+    .container {
+        height: 450px;
+        padding-right: calc(20px + 6px);
+    }
+}

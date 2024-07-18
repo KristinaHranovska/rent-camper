@@ -1,0 +1,42 @@
+.listImages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.cardImg {
+    width: 340px;
+    height: 190px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: 60% 50%;
+}
+
+.textDescription {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-filter);
+
+    margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .listImages {
+        flex-direction: row;
+
+        margin-bottom: 24px;
+    }
+
+    .cardImg {
+        width: 290px;
+        height: 310px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .listImages {
+        justify-content: center;
+    }
+}

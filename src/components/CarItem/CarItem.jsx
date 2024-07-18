@@ -7,11 +7,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { selectFavoriteCars } from "@redux/favorite/selectors";
+import ModalWindow from "shared/componets/ModalWindow/ModalWindow";
+import DetailInform from "components/DetailInform/DetailInform";
 
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
   const favoriteItems = useSelector(selectFavoriteCars);
   const [isActive, setIsActive] = useState(false);
+  const [modalDataIsOpen, setModalDataOpen] = useState(false);
 
   useEffect(() => {
     setIsActive(favoriteItems.some((item) => item._id === data._id));
@@ -116,8 +119,20 @@ const CarItem = ({ data }) => {
             </li>
           )}
         </ul>
-        <MainButton title="Show more" btnType="main" className={style.carBtn} />
+        <MainButton
+          title="Show more"
+          btnType="main"
+          className={style.carBtn}
+          onClick={() => setModalDataOpen(true)}
+        />
       </div>
+
+      <ModalWindow
+        isOpen={modalDataIsOpen}
+        onClose={() => setModalDataOpen(false)}
+      >
+        <DetailInform db={data} />
+      </ModalWindow>
     </div>
   );
 };

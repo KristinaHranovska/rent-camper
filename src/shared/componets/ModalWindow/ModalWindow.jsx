@@ -1,8 +1,16 @@
 import Modal from "react-modal";
 import { icons as sprite } from "shared/icons/index";
 import "./ModalWindow.css";
+import { useEffect } from "react";
 
 const ModalWindow = ({ isOpen, onClose, children }) => {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   return (
     <Modal
       isOpen={isOpen}
