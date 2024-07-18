@@ -1,6 +1,14 @@
 .navigation {
     position: relative;
     height: 60px;
+    display: flex;
+
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 90px;
+    height: 60px;
 }
 
 .navigationList {
