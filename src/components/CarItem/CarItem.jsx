@@ -9,6 +9,7 @@ import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { selectFavoriteCars } from "@redux/favorite/selectors";
 import ModalWindow from "shared/componets/ModalWindow/ModalWindow";
 import DetailInform from "components/DetailInform/DetailInform";
+import { capitalizeFirstLetter } from "helpers/constants";
 
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
@@ -29,12 +30,41 @@ const CarItem = ({ data }) => {
     setIsActive(!isActive);
   };
 
-  const capitalizeFirstLetter = (string) => {
-    return string
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
+  const categoriesData = [
+    {
+      title: `${data.adults} adults`,
+      svg: "users",
+      className: style.strokeStyle,
+    },
+    {
+      title: `${capitalizeFirstLetter(data.details.transmission)}`,
+      svg: "transmission",
+      className: style.fillStyle,
+    },
+    {
+      title: `${capitalizeFirstLetter(data.engine)}`,
+      svg: "petrol",
+      className: style.strokeStyle,
+    },
+    {
+      title: "Kitchen",
+      svg: "kitchen",
+      className: style.fillStyle,
+      condition: data.details.kitchen > 0,
+    },
+    {
+      title: `${data.details.beds} beds`,
+      svg: "bed",
+      className: style.fillStyle,
+      condition: data.details.beds > 0,
+    },
+    {
+      title: "AC",
+      svg: "ac",
+      className: style.strokeStyle,
+      condition: data.details.airConditioner > 0,
+    },
+  ];
 
   return (
     <div className={style.cardCar}>
@@ -74,49 +104,17 @@ const CarItem = ({ data }) => {
         <p className={style.textDescription}>{data.description}</p>
 
         <ul className={style.categoriesList}>
-          <li>
-            <Categories
-              title={`${data.adults} adults`}
-              svg="users"
-              className={style.strokeStyle}
-            />
-          </li>
-          <li>
-            <Categories
-              title={`${capitalizeFirstLetter(data.details.transmission)}`}
-              svg="transmission"
-              className={style.fillStyle}
-            />
-          </li>
-          <li>
-            <Categories
-              title={`${capitalizeFirstLetter(data.engine)}`}
-              svg="petrol"
-              className={style.strokeStyle}
-            />
-          </li>
-          {data.details.kitchen > 0 && (
-            <li>
-              <Categories
-                title={`Kitchen`}
-                svg="kitchen"
-                className={style.fillStyle}
-              />
-            </li>
-          )}
-          {data.details.beds > 0 && (
-            <li>
-              <Categories
-                title={`${data.details.beds} beds`}
-                svg="bed"
-                className={style.fillStyle}
-              />
-            </li>
-          )}
-          {data.details.airConditioner > 0 && (
-            <li>
-              <Categories title={`AC`} svg="ac" className={style.strokeStyle} />
-            </li>
+          {categoriesData.map(
+            (category, index) =>
+              (category.condition === undefined || category.condition) && (
+                <li key={index}>
+                  <Categories
+                    title={category.title}
+                    svg={category.svg}
+                    className={category.className}
+                  />
+                </li>
+              )
           )}
         </ul>
         <MainButton
