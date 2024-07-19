@@ -1,5 +1,7 @@
 import Navigation from "components/Navigation/Navigation";
 import { Helmet } from "react-helmet-async";
+import style from "./FavoritePage.module.css";
+import FavoriteList from "components/FavoriteList/FavoriteList";
 
 const FavoritePage = () => {
   return (
@@ -7,8 +9,10 @@ const FavoritePage = () => {
       <Helmet>
         <title>Favorite</title>
       </Helmet>
-      <Navigation />
-      <h2>FavoritePage</h2>
+      <section className={`${style.container} `}>
+        <Navigation />
+        <FavoriteList />
+      </section>
     </>
   );
 };

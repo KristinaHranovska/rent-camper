@@ -69,9 +69,7 @@ const CamperCars = () => {
             </ul>
           ) : (
             <div className={style.notFoundtBlock}>
-              <p className={style.notFound}>
-                Unfortunately, nothing was found for your request
-              </p>
+              <p className={style.notFound}>Unfortunately, nothing was found</p>
               <img src={logo} alt="pictures" />
             </div>
           )}

@@ -15,11 +15,13 @@ const Navigation = () => {
   const { isMobile, isDesktop, isTablet } = useMedia();
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "unset";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [menuOpen]);
+    if (isMobile) {
+      document.body.style.overflow = menuOpen ? "hidden" : "unset";
+      return () => {
+        document.body.style.overflow = "unset";
+      };
+    }
+  }, [menuOpen, isMobile]);
 
   useEffect(() => {
     gsap.fromTo(
@@ -34,19 +36,26 @@ const Navigation = () => {
   };
 
   return (
-    <nav ref={navRef} className={style.navigation}>
-      <NavLink className={style.navLink} to="/">
-        <img className={style.logo} src={logo} alt="logo" />
-      </NavLink>
+    <>
+      {(isDesktop || isTablet) && (
+        <nav ref={navRef} className={style.navigation}>
+          <NavLink className={style.navLink} to="/">
+            <img className={style.logo} src={logo} alt="logo" />
+          </NavLink>
+          <NavList />
+        </nav>
+      )}
 
       {isMobile && (
-        <>
+        <nav className={style.navigation}>
+          <NavLink className={style.navLink} to="/">
+            <img className={style.logo} src={logo} alt="logo" />
+          </NavLink>
           <Hamburger active={menuOpen} toggleMenu={toggleMenu} />
           <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
-        </>
+        </nav>
       )}
-      {(isDesktop || isTablet) && <NavList />}
-    </nav>
+    </>
   );
 };
 

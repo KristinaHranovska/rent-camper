@@ -104,6 +104,7 @@ const Features = ({ db }) => {
       condition: db.details.water > 0,
     },
   ];
+
   return (
     <div>
       <ul className={style.categoriesList}>
@@ -126,7 +127,9 @@ const Features = ({ db }) => {
       <ul className={style.detailsList}>
         <li className={style.detailsItem}>
           <p className={style.detailsText}>Form</p>
-          <p className={style.detailsText}>{capitalizeFirstLetter(db.form)}</p>
+          <p className={style.detailsText}>
+            {capitalizeFirstLetter(db.form ?? "")}
+          </p>
         </li>
         <li className={style.detailsItem}>
           <p className={style.detailsText}>Length</p>
