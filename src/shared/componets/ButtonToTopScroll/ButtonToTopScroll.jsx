@@ -28,12 +28,15 @@ const ButtonToTopScroll = () => {
   }, []);
 
   return (
-    <div className={style.scrollToTop}>
-      {isVisible && (
-        <div className={style.button} onClick={scrollToTop}>
-          <IoArrowUp className={style.icon} />
-        </div>
-      )}
+    <div
+      className={`${style.scrollToTop} ${
+        isVisible ? style.visible : style.hidden
+      }`}
+      onClick={scrollToTop}
+    >
+      <div className={style.button}>
+        <IoArrowUp className={style.icon} />
+      </div>
     </div>
   );
 };

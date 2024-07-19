@@ -9,6 +9,7 @@ import DetailInform from "components/DetailInform/DetailInform";
 import { useState } from "react";
 import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { useMedia } from "hooks/useMedia";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
@@ -36,55 +37,70 @@ const FavoriteList = () => {
   };
 
   return (
-    <div className={style.favorite}>
-      <ul className={style.favoriteList}>
+    <div
+      className={style.favorite}
+      data-aos="zoom-out"
+      data-aos-duration="1500"
+    >
+      <TransitionGroup component="ul" className={style.favoriteList}>
         {myFavoriteList
           .slice(
             0,
             isMobile || isTablet ? visibleFavoriteCar : myFavoriteList.length
           )
           .map((car) => (
-            <li data-aos="zoom-in" key={car._id}>
-              <div className={style.favoriteItem}>
-                <svg
-                  className={`${style.iconHeart} ${
-                    myFavoriteList.some((item) => item._id === car._id)
-                      ? style.active
-                      : ""
-                  }`}
-                  onClick={() => handleClick(car)}
-                >
-                  <use xlinkHref={`${sprite}#icon-favorite`} />
-                </svg>
+            <CSSTransition
+              key={car._id}
+              timeout={500}
+              classNames={{
+                enter: style.enter,
+                enterActive: style.enterActive,
+                exit: style.exit,
+                exitActive: style.exitActive,
+              }}
+            >
+              <li>
+                <div className={style.favoriteItem}>
+                  <svg
+                    className={`${style.iconHeart} ${
+                      myFavoriteList.some((item) => item._id === car._id)
+                        ? style.active
+                        : ""
+                    }`}
+                    onClick={() => handleClick(car)}
+                  >
+                    <use xlinkHref={`${sprite}#icon-favorite`} />
+                  </svg>
 
-                <div className={style.favoriteImgContainer}>
-                  <img
-                    className={style.favoriteImg}
-                    src={car.gallery[0]}
-                    alt={car.name}
+                  <div className={style.favoriteImgContainer}>
+                    <img
+                      className={style.favoriteImg}
+                      src={car.gallery[0]}
+                      alt={car.name}
+                    />
+                  </div>
+
+                  <div className={style.favoriteMainInfo}>
+                    <h2 className={style.favoriteTitle}>{car.name}</h2>
+                    <p className={style.favoritePrice}>&#8364;{car.price}</p>
+
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={car.rating}
+                      precision={0.5}
+                      readOnly
+                    />
+                  </div>
+                  <MainButton
+                    title="Show more"
+                    btnType="main"
+                    onClick={() => handleShowMore(car)}
                   />
                 </div>
-
-                <div className={style.favoriteMainInfo}>
-                  <h2 className={style.favoriteTitle}>{car.name}</h2>
-                  <p className={style.favoritePrice}>&#8364;{car.price}</p>
-
-                  <Rating
-                    name="half-rating-read"
-                    defaultValue={car.rating}
-                    precision={0.5}
-                    readOnly
-                  />
-                </div>
-                <MainButton
-                  title="Show more"
-                  btnType="main"
-                  onClick={() => handleShowMore(car)}
-                />
-              </div>
-            </li>
+              </li>
+            </CSSTransition>
           ))}
-      </ul>
+      </TransitionGroup>
 
       {(isMobile || isTablet) && visibleFavoriteCar < myFavoriteList.length && (
         <MainButton
