@@ -10,6 +10,7 @@ import CarItem from "components/CarItem/CarItem";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
+import Loader from "components/Loader/Loader";
 
 const CamperCars = () => {
   const dispatch = useDispatch();
@@ -55,15 +56,13 @@ const CamperCars = () => {
   return (
     <div id="camperCars" className={style.container}>
       {isLoading ? (
-        <div className={style.containerLoader}>
-          <img src={logo} alt="pictures" />
-        </div>
+        <Loader />
       ) : (
         <>
           {visibleCars.length > 0 ? (
             <ul className={style.carsList}>
               {visibleCars.map((cars) => (
-                <li className={style.carItem} key={cars._id}>
+                <li data-aos="zoom-in" className={style.carItem} key={cars._id}>
                   <CarItem data={cars} />
                 </li>
               ))}

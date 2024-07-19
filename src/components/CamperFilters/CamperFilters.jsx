@@ -92,7 +92,13 @@ const CamperFilters = () => {
   };
 
   return (
-    <div className={style.formThumb}>
+    <div
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay="300"
+      data-aos-offset="0"
+      className={style.formThumb}
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.locationfield}>
           <label className={style.labelLocation}>Location</label>

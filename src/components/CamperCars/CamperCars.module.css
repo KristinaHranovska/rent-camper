@@ -1,6 +1,15 @@
+.container {
+    position: relative;
+}
+
 .containerLoader {
-    display: flex;
-    justify-content: center;
+    width: 900px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 1;
 }
 
 .carsList {

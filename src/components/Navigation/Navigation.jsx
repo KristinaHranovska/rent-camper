@@ -24,7 +24,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={style.navigation}>
+    <nav
+      data-aos="fade-down"
+      data-aos-anchor-placement="top-center"
+      className={style.navigation}
+    >
       <NavLink className={style.navLink} to="/">
         <img className={style.logo} src={logo} alt="logo" />
       </NavLink>

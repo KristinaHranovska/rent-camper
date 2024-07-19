@@ -1,14 +1,16 @@
+import { useEffect, useState, useRef } from "react";
 import { format, addDays } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { icons as sprite } from "shared/icons/index";
 import style from "./HomeSearch.module.css";
-import { useEffect, useState } from "react";
+import { gsap } from "gsap";
 
 const HomeSearch = () => {
   const [localTime, setLocalTime] = useState("");
   const [formattedTomorrow, setFormattedTomorrow] = useState("");
 
   const today = new Date();
+  const homeSearchRef = useRef(null);
 
   useEffect(() => {
     const checkTime = (date) => {
@@ -43,10 +45,16 @@ const HomeSearch = () => {
     };
 
     checkTime(today);
+
+    gsap.fromTo(
+      homeSearchRef.current,
+      { scale: 0.5, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }
+    );
   });
 
   return (
-    <div className={style.homeSearch}>
+    <div className={style.homeSearch} ref={homeSearchRef}>
       <ul className={style.homeSearchList}>
         <li className={style.homeSearchItems}>
           <svg className={style.iconHome}>
