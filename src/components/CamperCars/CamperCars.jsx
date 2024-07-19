@@ -53,7 +53,7 @@ const CamperCars = () => {
   };
 
   return (
-    <div className={style.container}>
+    <div id="camperCars" className={style.container}>
       {isLoading ? (
         <div className={style.containerLoader}>
           <img src={logo} alt="pictures" />

@@ -11,6 +11,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import { carsReducer } from './favorite/slice';
+import { bookingReducer } from './booking/bookingSlice';
 
 const favoritePersistConfig = {
     key: 'camper',
@@ -19,7 +20,10 @@ const favoritePersistConfig = {
 };
 
 export const store = configureStore({
-    reducer: persistReducer(favoritePersistConfig, carsReducer),
+    reducer: {
+        favorite: persistReducer(favoritePersistConfig, carsReducer),
+        booking: bookingReducer,
+    },
 
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

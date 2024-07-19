@@ -9,3 +9,9 @@ export const initialStateVan = {
         form: ''
     }
 }
+
+export const initialStateBooking = {
+    bookings: [],
+    isLoading: false,
+    error: null,
+}

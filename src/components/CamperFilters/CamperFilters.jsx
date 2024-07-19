@@ -9,10 +9,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilters, setFilters } from "@redux/favorite/slice";
 import { selectFilters } from "@redux/favorite/selectors";
+import clsx from "clsx";
+import { scrollToElementById } from "helpers/scrollToElementById";
 
 const CamperFilters = () => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
+
   const [checkedItems, setCheckedItems] = useState({});
   const [radioItems, setRadioItems] = useState({});
 
@@ -59,6 +62,8 @@ const CamperFilters = () => {
     resetField("location");
     setCheckedItems({});
     setRadioItems({});
+
+    scrollToElementById("camperCars");
   };
 
   const handleResetFilters = () => {
@@ -73,7 +78,7 @@ const CamperFilters = () => {
       panelTruck: "Van",
       fullyIntegrated: "Fully Integrated",
       alcove: "Alcove",
-      airConditioner: "Conditioner",
+      ac: "AC",
       transmission: "Automatic",
       kitchen: "Kitchen",
       tv: "TV",
@@ -122,30 +127,34 @@ const CamperFilters = () => {
         <h2 className={style.formTitle}>Vehicle equipment</h2>
 
         <ul className={style.equipment}>
-          {["airConditioner", "transmission", "kitchen", "tv", "shower"].map(
-            (item) => (
-              <li key={item}>
-                <label
-                  className={`${style.labelCheck} ${
-                    checkedItems[item] ? style.checkedLabelCheck : ""
-                  }`}
+          {["ac", "transmission", "kitchen", "tv", "shower"].map((item) => (
+            <li key={item}>
+              <label
+                className={`${style.labelCheck} ${
+                  checkedItems[item] ? style.checkedLabelCheck : ""
+                }`}
+              >
+                <input
+                  name="details"
+                  type="checkbox"
+                  value={item}
+                  {...register("details")}
+                  className={style.hiddenInput}
+                  onChange={handleCheckboxChange}
+                />
+                <svg
+                  className={clsx(style.iconEquipment, {
+                    [style.strokeStyle]: item === "ac",
+                    [style.fillStyle]: item !== "ac",
+                  })}
                 >
-                  <input
-                    name="details"
-                    type="checkbox"
-                    value={item}
-                    {...register("details")}
-                    className={style.hiddenInput}
-                    onChange={handleCheckboxChange}
-                  />
-                  <svg className={`${style.iconEquipment} ${style.fillStyle}`}>
-                    <use xlinkHref={`${sprite}#icon-${item}`} />
-                  </svg>
-                  <h3 className={style.equipmentTitle}>{formatTitle(item)}</h3>
-                </label>
-              </li>
-            )
-          )}
+                  <use xlinkHref={`${sprite}#icon-${item}`} />
+                </svg>
+
+                <h3 className={style.equipmentTitle}>{formatTitle(item)}</h3>
+              </label>
+            </li>
+          ))}
         </ul>
 
         <h2 className={style.formTitle}>Vehicle type</h2>

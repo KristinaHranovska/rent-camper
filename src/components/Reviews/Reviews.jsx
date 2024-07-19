@@ -31,7 +31,9 @@ const Reviews = ({ db }) => {
   );
 
   return isDesktop ? (
-    <CustomScrollWrapper>{content}</CustomScrollWrapper>
+    <CustomScrollWrapper>
+      <div className={style.thumb}>{content}</div>
+    </CustomScrollWrapper>
   ) : (
     content
   );

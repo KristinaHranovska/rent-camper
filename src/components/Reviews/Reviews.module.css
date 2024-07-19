@@ -1,6 +1,9 @@
-.reviewsList {
+.thumb {
     height: 525px;
     padding-right: 15px;
+}
+
+.reviewsList {
     display: flex;
     flex-direction: column;
     gap: 20px;

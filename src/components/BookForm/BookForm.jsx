@@ -9,9 +9,13 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./react-datepicker.css";
+import { useDispatch } from "react-redux";
+import { postBooking } from "@redux/booking/operation";
 
 const BookForm = () => {
+  const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -24,9 +28,13 @@ const BookForm = () => {
     mode: "onTouched",
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit = async (data) => {
+    try {
+      dispatch(postBooking(data));
+      reset();
+    } catch (error) {
+      console.error("Booking failed:", error);
+    }
   };
 
   const handleDateChange = (date) => {
@@ -99,7 +107,7 @@ const BookForm = () => {
 
         <MainButton
           type="submit"
-          title="Search"
+          title="Send"
           btnType="main"
           className={style.searchBtn}
         />

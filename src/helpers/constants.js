@@ -47,10 +47,8 @@ export const bookSchema = yup.object().shape({
         .required('Email is required')
         .email('Invalid email format'),
     date: yup
-        .date()
-        .required('Date is required')
-        .typeError('Invalid date format')
-        .nullable(),
+        .string()
+        .required('Date is required'),
     comment: yup
         .string()
         .max(500, 'Comment cannot be longer than 500 characters')
