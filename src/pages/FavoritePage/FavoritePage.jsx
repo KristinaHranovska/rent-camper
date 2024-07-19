@@ -2,6 +2,7 @@ import Navigation from "components/Navigation/Navigation";
 import { Helmet } from "react-helmet-async";
 import style from "./FavoritePage.module.css";
 import FavoriteList from "components/FavoriteList/FavoriteList";
+import ButtonToTopScroll from "shared/componets/ButtonToTopScroll/ButtonToTopScroll";
 
 const FavoritePage = () => {
   return (
@@ -12,6 +13,7 @@ const FavoritePage = () => {
       <section className={`${style.container} `}>
         <Navigation />
         <FavoriteList />
+        <ButtonToTopScroll />
       </section>
     </>
   );

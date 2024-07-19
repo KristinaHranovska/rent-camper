@@ -1,0 +1,35 @@
+.scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.button {
+    background-color: var(--color-main-button);
+    color: var(--color-categories);
+    border-radius: 100%;
+    padding: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+    animation: bounce 2s infinite;
+}
+
+.button:hover {
+    opacity: 1;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
