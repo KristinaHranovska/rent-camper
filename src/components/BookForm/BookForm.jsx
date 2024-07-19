@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { bookSchema, formValuesBook } from "helpers/constants";
 import MainButton from "shared/componets/MainButton/MainButton";
-
 import style from "./BookForm.module.css";
 import { icons as sprite } from "shared/icons/index";
 import { useState } from "react";
@@ -32,6 +31,7 @@ const BookForm = () => {
     try {
       dispatch(postBooking(data));
       reset();
+      setSelectedDate(null); // скидання вибраної дати після відправки форми
     } catch (error) {
       console.error("Booking failed:", error);
     }
@@ -39,7 +39,8 @@ const BookForm = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setValue("date", date);
+    const formattedDate = date ? date.toLocaleDateString("en-GB") : "";
+    setValue("date", formattedDate, { shouldValidate: true });
   };
 
   return (
@@ -65,7 +66,9 @@ const BookForm = () => {
 
           <div>
             <input
-              className={`${style.formInput} ${errors.name && style.errorName}`}
+              className={`${style.formInput} ${
+                errors.email && style.errorName
+              }`}
               type="text"
               name="email"
               placeholder="Email"
@@ -82,12 +85,17 @@ const BookForm = () => {
                 selected={selectedDate}
                 onChange={handleDateChange}
                 placeholderText="Booking date"
-                className={`${style.formInput}`}
+                className={`${style.formInput} ${
+                  errors.date && style.errorDate
+                }`}
                 dateFormat="dd/MM/yyyy"
               />
               <svg className={`${style.iconCalendar}`}>
                 <use xlinkHref={`${sprite}#icon-calendar`} />
               </svg>
+              {errors.date && (
+                <span className={style.errorSpan}>{errors.date.message}</span>
+              )}
             </div>
           </div>
 

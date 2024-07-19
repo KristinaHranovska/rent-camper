@@ -26,13 +26,14 @@ export const capitalizeFirstLetter = (string) => {
 export const formValuesBook = {
     name: "",
     email: "",
-    date: "",
+    date: null,
     comment: ""
 }
 
 export const formatRegex =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+export const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/;
 
 export const bookSchema = yup.object().shape({
     name: yup
@@ -50,7 +51,8 @@ export const bookSchema = yup.object().shape({
         .email('Invalid email format'),
     date: yup
         .string()
-        .required('Date is required'),
+        .required('Date is required')
+        .matches(dateRegex, 'Date must be in format dd/MM/yyyy'),
     comment: yup
         .string()
         .max(500, 'Comment cannot be longer than 500 characters')
