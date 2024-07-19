@@ -4,17 +4,17 @@ import Categories from "shared/componets/Categories/Categories";
 import MainButton from "shared/componets/MainButton/MainButton";
 import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { selectFavoriteCars } from "@redux/favorite/selectors";
-import ModalWindow from "shared/componets/ModalWindow/ModalWindow";
 import DetailInform from "components/DetailInform/DetailInform";
 import { capitalizeFirstLetter } from "helpers/constants";
 import style from "./CarItem.module.css";
 import { icons as sprite } from "shared/icons/index";
+import { useModalContext } from "context/useModalContext";
 
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
   const favoriteItems = useSelector(selectFavoriteCars);
   const [isActive, setIsActive] = useState(false);
-  const [modalDataIsOpen, setModalDataOpen] = useState(false);
+  const { openModal } = useModalContext();
 
   useEffect(() => {
     setIsActive(favoriteItems.some((item) => item._id === data._id));
@@ -120,16 +120,9 @@ const CarItem = ({ data }) => {
           title="Show more"
           btnType="main"
           className={style.carBtn}
-          onClick={() => setModalDataOpen(true)}
+          onClick={() => openModal(<DetailInform db={data} />)}
         />
       </div>
-
-      <ModalWindow
-        isOpen={modalDataIsOpen}
-        onClose={() => setModalDataOpen(false)}
-      >
-        <DetailInform db={data} />
-      </ModalWindow>
     </div>
   );
 };

@@ -4,24 +4,22 @@ import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./FavoriteList.module.css";
 import { icons as sprite } from "shared/icons/index";
 import { Rating } from "@mui/material";
-import ModalWindow from "shared/componets/ModalWindow/ModalWindow";
-import DetailInform from "components/DetailInform/DetailInform";
 import { useState, useEffect, useRef } from "react";
 import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { useMedia } from "hooks/useMedia";
 import { gsap } from "gsap";
-
 import { default as mainPicture } from "assets/images/logo.webp";
 import { NavLink } from "react-router-dom";
+import { useModalContext } from "context/useModalContext";
+import DetailInform from "components/DetailInform/DetailInform";
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
   const myFavoriteList = useSelector(selectFavoriteCars);
-  const [modalDataIsOpen, setModalDataOpen] = useState(false);
-  const [selectedCar, setSelectedCar] = useState(null);
   const [visibleFavoriteCar, setVisibleFavoriteCar] = useState(4);
   const { isMobile, isTablet } = useMedia();
   const listRef = useRef(null);
+  const { openModal } = useModalContext();
 
   useEffect(() => {
     if (listRef.current && listRef.current.children.length > 0) {
@@ -35,8 +33,7 @@ const FavoriteList = () => {
   }, [myFavoriteList]);
 
   const handleShowMore = (car) => {
-    setSelectedCar(car);
-    setModalDataOpen(true);
+    openModal(<DetailInform db={car} />);
   };
 
   const handleClick = (car) => {
@@ -131,15 +128,6 @@ const FavoriteList = () => {
                 onClick={handleLoadMore}
               />
             )}
-
-          {selectedCar && (
-            <ModalWindow
-              isOpen={modalDataIsOpen}
-              onClose={() => setModalDataOpen(false)}
-            >
-              <DetailInform db={selectedCar} />
-            </ModalWindow>
-          )}
         </div>
       ) : (
         <div className={style.emptyPage}>

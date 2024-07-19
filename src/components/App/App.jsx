@@ -5,6 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import SharedLayout from "shared/componets/SharedLayout/SharedLayout";
+import { useModalContext } from "context/useModalContext";
+import ModalWindow from "shared/componets/ModalWindow/ModalWindow";
 
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const CatalogPage = lazy(() => import("pages/CatalogPage/CatalogPage"));
@@ -13,6 +15,7 @@ const FavoritePage = lazy(() => import("pages/FavoritePage/FavoritePage"));
 AOS.init();
 
 const App = () => {
+  const { isOpen, modalContent } = useModalContext();
   return (
     <>
       <Routes>
@@ -23,6 +26,8 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
+
+      <ModalWindow isOpen={isOpen}>{modalContent}</ModalWindow>
     </>
   );
 };
