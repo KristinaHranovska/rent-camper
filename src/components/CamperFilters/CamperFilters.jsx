@@ -5,19 +5,29 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperFilters.module.css";
 import { icons as sprite } from "shared/icons/index";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilters, setFilters } from "@redux/favorite/slice";
 import { selectFilters } from "@redux/favorite/selectors";
 import clsx from "clsx";
 import { scrollToElementById } from "helpers/scrollToElementById";
+import { gsap } from "gsap";
 
 const CamperFilters = () => {
+  const homeTitleRef = useRef(null);
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
 
   const [checkedItems, setCheckedItems] = useState({});
   const [radioItems, setRadioItems] = useState({});
+
+  useEffect(() => {
+    gsap.fromTo(
+      homeTitleRef.current,
+      { x: -100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+    );
+  }, []);
 
   const handleCheckboxChange = (event) => {
     const { value } = event.target;
@@ -92,13 +102,7 @@ const CamperFilters = () => {
   };
 
   return (
-    <div
-      data-aos="fade-zoom-in"
-      data-aos-easing="ease-in-back"
-      data-aos-delay="300"
-      data-aos-offset="0"
-      className={style.formThumb}
-    >
+    <div ref={homeTitleRef} className={style.formThumb}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.locationfield}>
           <label className={style.labelLocation}>Location</label>

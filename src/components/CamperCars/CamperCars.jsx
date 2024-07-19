@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCar } from "@redux/favorite/operation";
 import {
@@ -11,9 +11,11 @@ import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
 import Loader from "components/Loader/Loader";
+import { gsap } from "gsap";
 
 const CamperCars = () => {
   const dispatch = useDispatch();
+  const carRefs = useRef([]);
   const camperCars = useSelector(selectCars);
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectLoading);
@@ -52,6 +54,22 @@ const CamperCars = () => {
   const handleLoadMore = () => {
     setCarsToShow((prev) => prev + 4);
   };
+
+  useEffect(() => {
+    carRefs.current.forEach((car, index) => {
+      gsap.fromTo(
+        car,
+        { scale: 0.5, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          delay: index * 0.2,
+        }
+      );
+    });
+  }, [visibleCars]);
 
   return (
     <div id="camperCars" className={style.container}>

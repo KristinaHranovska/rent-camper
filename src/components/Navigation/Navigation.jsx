@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Hamburger from "shared/componets/Hamburger/Hamburger";
 import Menu from "components/Menu/Menu";
 
@@ -7,8 +7,10 @@ import { default as logo } from "assets/images/logo.webp";
 import { NavLink } from "react-router-dom";
 import { useMedia } from "hooks/useMedia";
 import NavList from "shared/componets/NavList/NavList";
+import { gsap } from "gsap";
 
 const Navigation = () => {
+  const navRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const { isMobile, isDesktop, isTablet } = useMedia();
 
@@ -19,16 +21,20 @@ const Navigation = () => {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    gsap.fromTo(
+      navRef.current,
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+    );
+  }, []);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
-    <nav
-      data-aos="fade-down"
-      data-aos-anchor-placement="top-center"
-      className={style.navigation}
-    >
+    <nav ref={navRef} className={style.navigation}>
       <NavLink className={style.navLink} to="/">
         <img className={style.logo} src={logo} alt="logo" />
       </NavLink>

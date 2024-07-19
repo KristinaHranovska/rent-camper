@@ -1,16 +1,10 @@
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 import SharedLayout from "shared/componets/SharedLayout/SharedLayout";
 
 const HomePage = lazy(() => import("pages/HomePage/HomePage"));
 const CatalogPage = lazy(() => import("pages/CatalogPage/CatalogPage"));
 const FavoritePage = lazy(() => import("pages/FavoritePage/FavoritePage"));
-
-AOS.init();
 
 const App = () => {
   return (
