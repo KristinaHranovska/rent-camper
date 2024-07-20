@@ -17,7 +17,6 @@ const CamperCars = () => {
   const camperCars = useSelector(selectCars);
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectLoading);
-
   const [visibleCars, setVisibleCars] = useState([]);
   const [carsToShow, setCarsToShow] = useState(4);
 
@@ -61,9 +60,9 @@ const CamperCars = () => {
         <>
           {visibleCars.length > 0 ? (
             <ul className={style.carsList}>
-              {visibleCars.map((cars) => (
-                <li data-aos="zoom-in" className={style.carItem} key={cars._id}>
-                  <CarItem data={cars} />
+              {visibleCars.map((car) => (
+                <li data-aos="zoom-in" className={style.carItem} key={car._id}>
+                  <CarItem data={car} />
                 </li>
               ))}
             </ul>

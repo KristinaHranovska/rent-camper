@@ -1,3 +1,4 @@
+// FavoriteList.jsx
 import { selectFavoriteCars } from "@redux/favorite/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import MainButton from "shared/componets/MainButton/MainButton";
@@ -9,7 +10,7 @@ import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { useMedia } from "hooks/useMedia";
 import { gsap } from "gsap";
 import { default as mainPicture } from "assets/images/logo.webp";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useModalContext } from "context/useModalContext";
 import DetailInform from "components/DetailInform/DetailInform";
 
@@ -19,7 +20,8 @@ const FavoriteList = () => {
   const [visibleFavoriteCar, setVisibleFavoriteCar] = useState(4);
   const { isMobile, isTablet } = useMedia();
   const listRef = useRef(null);
-  const { openModal } = useModalContext();
+  const { openModal, closeModal } = useModalContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (listRef.current && listRef.current.children.length > 0) {
@@ -33,7 +35,13 @@ const FavoriteList = () => {
   }, [myFavoriteList]);
 
   const handleShowMore = (car) => {
-    openModal(<DetailInform db={car} />);
+    navigate(`/favorite/${car._id}`);
+    openModal(<DetailInform db={car} />, handleCloseModal);
+  };
+
+  const handleCloseModal = () => {
+    navigate("/favorite");
+    closeModal();
   };
 
   const handleClick = (car) => {
