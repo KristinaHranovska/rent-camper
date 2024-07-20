@@ -23,10 +23,7 @@ const App = () => {
           <Route index element={<HomePage />} />
 
           <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<CatalogPage />} />
-
           <Route path="/favorite" element={<FavoritePage />} />
-          <Route path="/favorite/:id" element={<FavoritePage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Route>

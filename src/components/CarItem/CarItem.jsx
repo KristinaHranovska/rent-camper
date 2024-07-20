@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Categories from "shared/componets/Categories/Categories";
-import MainButton from "shared/componets/MainButton/MainButton";
+import { useSelector, useDispatch } from "react-redux";
 import { addFavorite, deleteFavorite } from "@redux/favorite/slice";
 import { selectFavoriteCars } from "@redux/favorite/selectors";
 import { capitalizeFirstLetter } from "helpers/constants";
@@ -10,6 +8,8 @@ import { icons as sprite } from "shared/icons/index";
 import { useModalContext } from "context/useModalContext";
 import { useNavigate } from "react-router-dom";
 import DetailInform from "components/DetailInform/DetailInform";
+import MainButton from "shared/componets/MainButton/MainButton";
+import Categories from "shared/componets/Categories/Categories";
 
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const CarItem = ({ data }) => {
   };
 
   const handleOpenModal = () => {
-    navigate(`/catalog/${data._id}`);
+    navigate(`/catalog?car=${data._id}`);
     openModal(<DetailInform db={data} />, handleCloseModal);
   };
 
@@ -54,7 +54,7 @@ const CarItem = ({ data }) => {
     },
     {
       title: `${capitalizeFirstLetter(data.engine)}`,
-      svg: "fuel",
+      svg: "petrol",
       className: style.strokeStyle,
     },
     {

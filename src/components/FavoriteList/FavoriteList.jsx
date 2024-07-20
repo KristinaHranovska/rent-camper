@@ -15,12 +15,12 @@ import DetailInform from "components/DetailInform/DetailInform";
 
 const FavoriteList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const myFavoriteList = useSelector(selectFavoriteCars);
   const [visibleFavoriteCar, setVisibleFavoriteCar] = useState(4);
   const { isMobile, isTablet } = useMedia();
   const listRef = useRef(null);
   const { openModal, closeModal } = useModalContext();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (listRef.current && listRef.current.children.length > 0) {
@@ -34,7 +34,7 @@ const FavoriteList = () => {
   }, [myFavoriteList]);
 
   const handleShowMore = (car) => {
-    navigate(`/favorite/${car._id}`);
+    navigate(`/favorite?car=${car._id}`);
     openModal(<DetailInform db={car} />, handleCloseModal);
   };
 
