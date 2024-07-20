@@ -43,8 +43,10 @@ const Navigation = () => {
           <NavLink className={style.navLink} to="/">
             <img className={style.logo} src={logo} alt="logo" />
           </NavLink>
-          <ThemeToggle />
-          <NavList />
+          <div className={style.blockNav}>
+            <ThemeToggle />
+            <NavList />
+          </div>
         </nav>
       )}
 
@@ -53,6 +55,7 @@ const Navigation = () => {
           <NavLink className={style.navLink} to="/">
             <img className={style.logo} src={logo} alt="logo" />
           </NavLink>
+          <ThemeToggle />
           <Hamburger active={menuOpen} toggleMenu={toggleMenu} />
           <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
         </nav>

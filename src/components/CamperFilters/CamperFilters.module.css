@@ -47,6 +47,7 @@
 .formInput:focus+.iconMap,
 .formInput:hover+.iconMap {
     fill: var(--color-stars);
+    stroke: var(--color-map);
 }
 
 .errorName {
@@ -66,7 +67,7 @@
     left: 18px;
     width: 18px;
     height: 20px;
-    transition: fill var(--animation);
+    transition: fill var(--animation), stroke var(--animation);
 }
 
 .iconClean {

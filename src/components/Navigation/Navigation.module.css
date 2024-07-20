@@ -23,6 +23,12 @@
         width: 100px;
         height: 70px;
     }
+
+    .blockNav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 }
 
 @media screen and (min-width: 1440px) {

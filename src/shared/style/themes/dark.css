@@ -14,4 +14,13 @@
     --color-line: rgba(224, 230, 238, 0.1);
     --color-backdrop: #1A202C;
     --color-shadow: rgba(0, 0, 0, 0.25);
+    --color-map: #000;
+
+    --toggle-bg-color: #34495e;
+    --toggle-bg-color-checked: #f1c40f;
+    --toggle-switch-color: #333;
+    --toggle-sun-color: #ecf0f1;
+    --toggle-moon-color: #f39c12;
+    --toggle-sun-color-checked: #f39c12;
+    --toggle-moon-color-checked: #ecf0f1;
 }
