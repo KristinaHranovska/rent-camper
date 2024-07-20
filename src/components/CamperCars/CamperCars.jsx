@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCar } from "@redux/favorite/operation";
 import {
@@ -11,14 +11,17 @@ import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
 import Loader from "shared/componets/Loader/Loader";
+import { gsap } from "gsap";
 
 const CamperCars = () => {
+  const listRef = useRef(null);
   const dispatch = useDispatch();
   const camperCars = useSelector(selectCars);
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectLoading);
   const [visibleCars, setVisibleCars] = useState([]);
   const [carsToShow, setCarsToShow] = useState(4);
+  const [previousCarsCount, setPreviousCarsCount] = useState(0);
 
   useEffect(() => {
     dispatch(getCar());
@@ -48,7 +51,24 @@ const CamperCars = () => {
     setVisibleCars(filteredCars.slice(0, carsToShow));
   }, [camperCars, filters, carsToShow]);
 
+  useEffect(() => {
+    if (listRef.current) {
+      const newItems = listRef.current.children;
+      const startIndex = previousCarsCount;
+      const endIndex = newItems.length;
+
+      gsap.fromTo(
+        Array.from(newItems).slice(startIndex, endIndex),
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.15)" }
+      );
+
+      setPreviousCarsCount(newItems.length);
+    }
+  }, [visibleCars, previousCarsCount]);
+
   const handleLoadMore = () => {
+    setPreviousCarsCount(visibleCars.length);
     setCarsToShow((prev) => prev + 4);
   };
 
@@ -59,9 +79,9 @@ const CamperCars = () => {
       ) : (
         <>
           {visibleCars.length > 0 ? (
-            <ul className={style.carsList}>
+            <ul className={style.carsList} ref={listRef}>
               {visibleCars.map((car) => (
-                <li data-aos="zoom-in" className={style.carItem} key={car._id}>
+                <li className={style.carItem} key={car._id}>
                   <CarItem data={car} />
                 </li>
               ))}

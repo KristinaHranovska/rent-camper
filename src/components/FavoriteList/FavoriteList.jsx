@@ -26,8 +26,8 @@ const FavoriteList = () => {
       const listItems = listRef.current.children;
       gsap.fromTo(
         listItems,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.1 }
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.15)" }
       );
     }
   }, [myFavoriteList]);
@@ -63,11 +63,7 @@ const FavoriteList = () => {
   return (
     <>
       {myFavoriteList.length > 0 ? (
-        <div
-          className={style.favorite}
-          data-aos="zoom-out"
-          data-aos-duration="1500"
-        >
+        <div className={style.favorite}>
           <ul className={style.favoriteList} ref={listRef}>
             {myFavoriteList
               .slice(
@@ -130,14 +126,12 @@ const FavoriteList = () => {
             )}
         </div>
       ) : (
-        <div className={style.emptyPage}>
+        <div ref={listRef} className={style.emptyPage}>
           <h2 className={style.emptyTitle}>
             Your collection of favorite camper vans is empty. Add a few models
             to start your journey!
           </h2>
-
           <img className={style.mainPicture} src={mainPicture} alt="logo" />
-
           <NavLink className={style.navLink} to="/catalog">
             <MainButton title="Return to the catalog" btnType="main" />
           </NavLink>

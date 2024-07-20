@@ -1,7 +1,5 @@
-import { formValuesVehicle, vehicleSchema } from "helpers/constants";
+import { formValuesVehicle } from "helpers/constants";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperFilters.module.css";
 import { icons as sprite } from "shared/icons/index";
@@ -50,7 +48,6 @@ const CamperFilters = () => {
     formState: { errors },
   } = useForm({
     defaultValues: formValuesVehicle,
-    resolver: yupResolver(vehicleSchema),
     mode: "onTouched",
   });
 
@@ -103,6 +100,15 @@ const CamperFilters = () => {
     resetField("location");
   };
 
+  const hasActiveFilters = () => {
+    const { location, details, form } = filters;
+    return (
+      (location && location.trim() !== "") ||
+      Object.values(details || {}).some((val) => val) ||
+      form !== ""
+    );
+  };
+
   return (
     <div ref={homeTitleRef} className={style.formThumb}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -111,12 +117,23 @@ const CamperFilters = () => {
           <div className={style.blockInput}>
             <input
               className={`${style.formInput} ${
-                errors.location && style.errorName
+                errors.location ? style.errorName : ""
               }`}
               type="text"
               name="location"
               placeholder="City"
-              {...register("location")}
+              {...register("location", {
+                pattern: {
+                  value: /^[A-Za-z, ]*$/,
+                  message: "Location can only contain English letters",
+                },
+                validate: (value) => {
+                  if (value && value.trim() === "") {
+                    return "Location cannot be just whitespace";
+                  }
+                  return true;
+                },
+              })}
             />
             <svg className={`${style.iconMap} ${style.fillStyle}`}>
               <use xlinkHref={`${sprite}#icon-map`} />
@@ -202,7 +219,8 @@ const CamperFilters = () => {
             btnType="main"
             className={style.searchBtn}
           />
-          {filters.location && (
+
+          {hasActiveFilters() && (
             <MainButton
               type="button"
               title="Reset"

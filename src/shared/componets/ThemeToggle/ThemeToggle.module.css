@@ -40,13 +40,13 @@
 }
 
 .inner::before {
-    content: '🌞';
+    content: '';
     color: var(--toggle-sun-color);
     transition: color 0.3s ease;
 }
 
 .inner::after {
-    content: '🌜';
+    content: '';
     color: var(--toggle-moon-color);
     transition: color 0.3s ease;
 }
