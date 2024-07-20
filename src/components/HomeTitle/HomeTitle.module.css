@@ -10,7 +10,7 @@
 }
 
 .homeMainTitle {
-    color: var(--color-white);
+    color: #FFFFFF;
     width: 280px;
     font-weight: 600;
     font-size: 35px;
@@ -33,7 +33,7 @@
 }
 
 .homeMainText {
-    color: var(--color-white);
+    color: #FFFFFF;
     width: 280px;
     font-size: 14px;
     line-height: 1.5;
@@ -48,7 +48,7 @@
 }
 
 .textBtn {
-    color: var(--color-white);
+    color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px) {

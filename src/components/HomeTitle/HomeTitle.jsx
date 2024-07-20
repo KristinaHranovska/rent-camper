@@ -34,7 +34,11 @@ const HomeTitle = () => {
 
       <div className={style.homeBtn}>
         <NavLink to="/catalog">
-          <MainButton title="Catalog" btnType="main" />
+          <MainButton
+            title="Catalog"
+            btnType="main"
+            className={style.textBtn}
+          />
         </NavLink>
         <NavLink to="/favorite">
           <MainButton

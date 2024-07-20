@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Loader from "components/Loader/Loader";
+import Loader from "shared/componets/Loader/Loader";
 
 const SharedLayout = () => {
   return (

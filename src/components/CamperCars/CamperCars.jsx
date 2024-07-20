@@ -10,7 +10,7 @@ import CarItem from "components/CarItem/CarItem";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
-import Loader from "components/Loader/Loader";
+import Loader from "shared/componets/Loader/Loader";
 
 const CamperCars = () => {
   const dispatch = useDispatch();

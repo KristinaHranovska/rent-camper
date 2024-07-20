@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import { useMedia } from "hooks/useMedia";
 import NavList from "shared/componets/NavList/NavList";
 import { gsap } from "gsap";
+import ThemeToggle from "shared/componets/ThemeToggle/ThemeToggle";
 
 const Navigation = () => {
   const navRef = useRef(null);
@@ -42,6 +43,7 @@ const Navigation = () => {
           <NavLink className={style.navLink} to="/">
             <img className={style.logo} src={logo} alt="logo" />
           </NavLink>
+          <ThemeToggle />
           <NavList />
         </nav>
       )}

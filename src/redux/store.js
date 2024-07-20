@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import { carsReducer } from './favorite/slice';
 import { bookingReducer } from './booking/bookingSlice';
+import { themeReducer } from './theme/themeSlice';
 
 const favoritePersistConfig = {
     key: 'camper',
@@ -19,8 +20,15 @@ const favoritePersistConfig = {
     whitelist: ['favoriteCar'],
 };
 
+const themePersistConfig = {
+    key: 'theme',
+    storage,
+    whitelist: ['theme'],
+};
+
 export const store = configureStore({
     reducer: {
+        theme: persistReducer(themePersistConfig, themeReducer),
         favorite: persistReducer(favoritePersistConfig, carsReducer),
         booking: bookingReducer,
     },
