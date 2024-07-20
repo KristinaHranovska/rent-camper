@@ -1,13 +1,8 @@
 :root {
-    --hue: 38;
-    --bg: hsl(var(--hue), 90%, 50%);
-    --fg: hsl(var(--hue), 90%, 10%);
     --trans-dur: 0.3s;
 }
 
 .container {
-    background-color: var(--bg);
-    color: var(--fg);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -95,15 +90,6 @@
     animation-name: truck-window2;
 }
 
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: hsl(var(--hue), 90%, 10%);
-        --fg: hsl(var(--hue), 90%, 50%);
-    }
-}
-
-/* Animations */
 @keyframes truck-body {
 
     from,

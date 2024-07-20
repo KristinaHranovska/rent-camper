@@ -46,6 +46,7 @@ const CamperFilters = () => {
     register,
     handleSubmit,
     resetField,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: formValuesVehicle,
@@ -54,6 +55,8 @@ const CamperFilters = () => {
   });
 
   const onSubmit = (data) => {
+    data.location = data.location.trim();
+
     const selectedDetails = Object.keys(checkedItems).reduce((acc, key) => {
       if (checkedItems[key]) {
         acc[key] = true;
@@ -68,8 +71,7 @@ const CamperFilters = () => {
         form: Object.keys(radioItems).find((key) => radioItems[key]),
       })
     );
-
-    resetField("location");
+    reset();
     setCheckedItems({});
     setRadioItems({});
 
@@ -78,7 +80,7 @@ const CamperFilters = () => {
 
   const handleResetFilters = () => {
     dispatch(resetFilters());
-    resetField("location");
+    reset();
     setCheckedItems({});
     setRadioItems({});
   };

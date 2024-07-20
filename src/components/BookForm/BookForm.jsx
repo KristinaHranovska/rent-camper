@@ -29,9 +29,13 @@ const BookForm = () => {
 
   const onSubmit = async (data) => {
     try {
+      data.name = data.name.trim();
+      data.email = data.email.trim();
+      data.comment = data.comment.trim();
+
       dispatch(postBooking(data));
       reset();
-      setSelectedDate(null); // скидання вибраної дати після відправки форми
+      setSelectedDate(null);
     } catch (error) {
       console.error("Booking failed:", error);
     }
