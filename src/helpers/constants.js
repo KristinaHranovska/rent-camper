@@ -27,12 +27,15 @@ export const formatRegex =
 
 export const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/;
 
+const nameRegex = /^[a-zA-Zа-яА-Яіїєґ'\s-]+$/;
+
 export const bookSchema = yup.object().shape({
     name: yup
         .string()
         .required('Name is required')
         .min(2, 'Name must be at least 2 characters long')
-        .max(50, 'Name cannot be longer than 50 characters'),
+        .max(50, 'Name cannot be longer than 50 characters')
+        .matches(nameRegex, 'Name can only contain English and Ukrainian letters, spaces, apostrophes, and hyphens'),
     email: yup
         .string()
         .matches(
