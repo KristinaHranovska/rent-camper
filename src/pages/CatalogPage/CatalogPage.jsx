@@ -1,4 +1,3 @@
-// CatalogPage.jsx
 import { Helmet } from "react-helmet-async";
 import Navigation from "components/Navigation/Navigation";
 import CamperFilters from "components/CamperFilters/CamperFilters";

@@ -1,4 +1,3 @@
-// FavoritePage.jsx
 import Navigation from "components/Navigation/Navigation";
 import { Helmet } from "react-helmet-async";
 import style from "./FavoritePage.module.css";

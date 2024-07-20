@@ -1,4 +1,3 @@
-// FavoriteList.jsx
 import { selectFavoriteCars } from "@redux/favorite/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import MainButton from "shared/componets/MainButton/MainButton";
