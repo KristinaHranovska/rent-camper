@@ -6,17 +6,15 @@ import { capitalizeFirstLetter } from "helpers/constants";
 import style from "./CarItem.module.css";
 import { icons as sprite } from "shared/icons/index";
 import { useModalContext } from "context/useModalContext";
-import { useNavigate } from "react-router-dom";
 import DetailInform from "components/DetailInform/DetailInform";
 import MainButton from "shared/componets/MainButton/MainButton";
 import Categories from "shared/componets/Categories/Categories";
 
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const favoriteItems = useSelector(selectFavoriteCars);
   const [isActive, setIsActive] = useState(false);
-  const { openModal, closeModal } = useModalContext();
+  const { openModal } = useModalContext();
 
   useEffect(() => {
     setIsActive(favoriteItems.some((item) => item._id === data._id));
@@ -29,16 +27,6 @@ const CarItem = ({ data }) => {
       dispatch(addFavorite(data));
     }
     setIsActive(!isActive);
-  };
-
-  const handleOpenModal = () => {
-    navigate(`/catalog?car=${data._id}`);
-    openModal(<DetailInform db={data} />, handleCloseModal);
-  };
-
-  const handleCloseModal = () => {
-    navigate("/catalog");
-    closeModal();
   };
 
   const categoriesData = [
@@ -132,7 +120,7 @@ const CarItem = ({ data }) => {
           title="Show more"
           btnType="main"
           className={style.carBtn}
-          onClick={handleOpenModal}
+          onClick={() => openModal(<DetailInform db={data} />)}
         />
       </div>
     </div>

@@ -15,16 +15,20 @@ const ModalWindow = ({ isOpen, children }) => {
     };
   }, [isOpen]);
 
+  const handleClose = () => {
+    closeModal();
+  };
+
   return (
     <Modal
       isOpen={isOpen}
       overlayClassName={"modal-overlay"}
       className={"modal-content"}
       closeTimeoutMS={300}
-      onRequestClose={() => closeModal()}
+      onRequestClose={handleClose}
       ariaHideApp={false}
     >
-      <button onClick={() => closeModal()} className="modal-close-button">
+      <button onClick={handleClose} className="modal-close-button">
         <svg className="iconClose">
           <use xlinkHref={`${sprite}#icon-close`} />
         </svg>
