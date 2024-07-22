@@ -1,5 +1,6 @@
 export const initialStateVan = {
     cars: [],
+    page: 1,
     isLoading: false,
     error: null,
     favoriteCar: [],

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCar } from "@redux/favorite/operation";
+import { getCar, getCamperMore } from "@redux/favorite/operation";
 import {
   selectCars,
   selectFilters,
@@ -20,12 +20,15 @@ const CamperCars = () => {
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectLoading);
   const [visibleCars, setVisibleCars] = useState([]);
-  const [carsToShow, setCarsToShow] = useState(4);
-  const [previousCarsCount, setPreviousCarsCount] = useState(0);
+  const [page, setPage] = useState(2);
 
   useEffect(() => {
-    dispatch(getCar());
+    dispatch(getCar({ page: 1, limit: 4 }));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getCamperMore(page));
+  }, [dispatch, page]);
 
   useEffect(() => {
     let filteredCars = camperCars;
@@ -48,13 +51,13 @@ const CamperCars = () => {
       filteredCars = filteredCars.filter((car) => car.form === filters.form);
     }
 
-    setVisibleCars(filteredCars.slice(0, carsToShow));
-  }, [camperCars, filters, carsToShow]);
+    setVisibleCars(filteredCars);
+  }, [camperCars, filters]);
 
   useEffect(() => {
     if (listRef.current) {
       const newItems = listRef.current.children;
-      const startIndex = previousCarsCount;
+      const startIndex = (page - 1) * 4;
       const endIndex = newItems.length;
 
       gsap.fromTo(
@@ -62,19 +65,16 @@ const CamperCars = () => {
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.15)" }
       );
-
-      setPreviousCarsCount(newItems.length);
     }
-  }, [visibleCars, previousCarsCount]);
+  }, [visibleCars, page]);
 
   const handleLoadMore = () => {
-    setPreviousCarsCount(visibleCars.length);
-    setCarsToShow((prev) => prev + 4);
+    setPage((prev) => prev + 1);
   };
 
   return (
     <div id="camperCars" className={style.container}>
-      {isLoading ? (
+      {isLoading && page === 1 ? (
         <Loader />
       ) : (
         <>
@@ -98,15 +98,14 @@ const CamperCars = () => {
               />
             </div>
           )}
-          {visibleCars.length < camperCars.length &&
-            visibleCars.length >= 4 && (
-              <MainButton
-                title="Load more"
-                btnType="load"
-                className={style.loadMore}
-                onClick={handleLoadMore}
-              />
-            )}
+          {!isLoading && camperCars.length % 4 === 0 && (
+            <MainButton
+              title="Load more"
+              btnType="load"
+              className={style.loadMore}
+              onClick={handleLoadMore}
+            />
+          )}
         </>
       )}
     </div>

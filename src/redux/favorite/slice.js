@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialStateVan } from "./constants";
-import { getCar } from "./operation";
+import { getCamperMore, getCar } from "./operation";
 
 const carsSlice = createSlice({
     name: 'camper',
@@ -40,11 +40,24 @@ const carsSlice = createSlice({
             .addCase(getCar.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
-                state.cars = action.payload;
+                state.cars = [...action.payload];
             })
             .addCase(getCar.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+            })
+            .addCase(getCamperMore.pending, (state) => {
+                state.isLoading = true;
+                state.error = false;
+            })
+            .addCase(getCamperMore.fulfilled, (state, action) => {
+                state.isLoading = false;
+                console.log(action.payload);
+                state.cars = [...state.cars, ...action.payload];
+            })
+            .addCase(getCamperMore.rejected, (state) => {
+                state.isLoading = false;
+                state.error = true;
             })
     }
 })

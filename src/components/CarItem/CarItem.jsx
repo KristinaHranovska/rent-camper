@@ -148,8 +148,8 @@ CarItem.propTypes = {
     description: PropTypes.string.isRequired,
     adults: PropTypes.number.isRequired,
     details: PropTypes.shape({
-      transmission: PropTypes.string.isRequired,
-      engine: PropTypes.string.isRequired,
+      transmission: PropTypes.string,
+      engine: PropTypes.string,
       kitchen: PropTypes.number,
       beds: PropTypes.number,
       airConditioner: PropTypes.number,
