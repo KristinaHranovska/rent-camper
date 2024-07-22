@@ -1,6 +1,5 @@
 [
     {
-        "_id": "923358b5151e473ab4bf58c584a5aa91",
         "name": "Large Motorhome (C28-34)",
         "price": 8000,
         "rating": 4,
@@ -22,7 +21,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 2,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -57,7 +56,6 @@
         ]
     },
     {
-        "_id": "9f5d4acc514a4c309bbd55f0730df2e4",
         "name": "Truck Camper",
         "price": 12000,
         "rating": 4.5,
@@ -79,7 +77,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 2,
-            "TV": 0,
+            "tv": 0,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -109,7 +107,6 @@
         ]
     },
     {
-        "_id": "0cff40c7c97c4af6a9c7e9a8d1ed178b",
         "name": "Class A Motorhome",
         "price": 19000,
         "rating": 4.5,
@@ -131,7 +128,7 @@
             "bathroom": 3,
             "kitchen": 1,
             "beds": 4,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -171,7 +168,6 @@
         ]
     },
     {
-        "_id": "3ff8a7a90750431d91d1555410448a76",
         "name": "Mid-size motorhome (C21-27)",
         "price": 11000,
         "rating": 4,
@@ -193,7 +189,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 4,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -238,7 +234,6 @@
         ]
     },
     {
-        "_id": "9dbc93f39d1f4932a9247a07c30b9c76",
         "name": "Road Bear C 23-25",
         "price": 10000,
         "rating": 4,
@@ -260,7 +255,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 3,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -295,7 +290,6 @@
         ]
     },
     {
-        "_id": "6ebfd82e7fec42f9847b737cf7f3aca7",
         "name": "Cruise America C-21",
         "price": 8000,
         "rating": 4.3,
@@ -317,7 +311,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 2,
-            "TV": 0,
+            "tv": 0,
             "CD": 0,
             "radio": 1,
             "shower": 1,
@@ -347,7 +341,6 @@
         ]
     },
     {
-        "_id": "c069629261344c778ffb00e2e42f7fd4",
         "name": "Britz 4 Berth",
         "price": 9000,
         "rating": 3,
@@ -369,7 +362,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 2,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -409,7 +402,6 @@
         ]
     },
     {
-        "_id": "939f738511144223a5192a340e258ef0",
         "name": "Mighty Class C Large [MT]",
         "price": 12000,
         "rating": 4.5,
@@ -431,7 +423,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 4,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -466,7 +458,6 @@
         ]
     },
     {
-        "_id": "6b2741d2f681425a9b52101f6bd54548",
         "name": "El Monte Class C Small [C]",
         "price": 11000,
         "rating": 4.4,
@@ -488,7 +479,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 3,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -523,7 +514,6 @@
         ]
     },
     {
-        "_id": "5760d8a683ae4e40a1a429ab03323b4d",
         "name": "Road Bear A 30-32",
         "price": 14000,
         "rating": 2.5,
@@ -545,7 +535,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 4,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -575,7 +565,6 @@
         ]
     },
     {
-        "_id": "83d538b5c33c49a28e93433b91cb31c0",
         "name": "El Monte Class A Family Sleeper [AF]",
         "price": 15000,
         "rating": 2,
@@ -597,7 +586,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 6,
-            "TV": 1,
+            "tv": 1,
             "CD": 1,
             "radio": 1,
             "shower": 1,
@@ -627,7 +616,6 @@
         ]
     },
     {
-        "_id": "c8ce33ffbe064c8fabbe06852b13622f",
         "name": "Mavericks",
         "price": 8000,
         "rating": 4,
@@ -649,7 +637,7 @@
             "bathroom": 0,
             "kitchen": 1,
             "beds": 1,
-            "TV": 0,
+            "tv": 0,
             "CD": 1,
             "radio": 1,
             "shower": 0,
@@ -679,7 +667,6 @@
         ]
     },
     {
-        "_id": "339e23c1bd7a4d77a23cde7431083056",
         "name": "Santa Cruz",
         "price": 7500,
         "rating": 5,
@@ -701,7 +688,7 @@
             "bathroom": 0,
             "kitchen": 1,
             "beds": 1,
-            "TV": 0,
+            "tv": 0,
             "CD": 1,
             "radio": 1,
             "shower": 0,
@@ -731,7 +718,6 @@
         ]
     },
     {
-        "_id": "124ea4c0c22348608e8d42e1cfcd533d",
         "name": "Mesa",
         "price": 7500,
         "rating": 3.5,
@@ -753,7 +739,7 @@
             "bathroom": 0,
             "kitchen": 1,
             "beds": 1,
-            "TV": 0,
+            "tv": 0,
             "CD": 1,
             "radio": 1,
             "shower": 0,
@@ -783,7 +769,6 @@
         ]
     },
     {
-        "_id": "a78fd33ee5be446296c71450cf04c496",
         "name": "Kuga Camper",
         "price": 8500,
         "rating": 4.4,
@@ -805,7 +790,7 @@
             "bathroom": 0,
             "kitchen": 1,
             "beds": 2,
-            "TV": 0,
+            "tv": 0,
             "CD": 0,
             "radio": 1,
             "shower": 0,
@@ -840,7 +825,6 @@
         ]
     },
     {
-        "_id": "12c0c8ede80a4573a7d7ea16d8a4cd28",
         "name": "HI-Top Camper",
         "price": 9000,
         "rating": 4.4,
@@ -862,7 +846,7 @@
             "bathroom": 0,
             "kitchen": 1,
             "beds": 2,
-            "TV": 0,
+            "tv": 0,
             "CD": 0,
             "radio": 1,
             "shower": 0,
@@ -897,7 +881,6 @@
         ]
     },
     {
-        "_id": "3b1c6e4f9b8b4bfd97d54d7599cd3543",
         "name": "El Monte Class B Small [B]",
         "price": 10000,
         "rating": 4.4,
@@ -919,7 +902,7 @@
             "bathroom": 1,
             "kitchen": 1,
             "beds": 2,
-            "TV": 0,
+            "tv": 0,
             "CD": 1,
             "radio": 1,
             "shower": 1,
