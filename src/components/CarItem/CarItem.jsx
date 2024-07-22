@@ -10,6 +10,8 @@ import DetailInform from "components/DetailInform/DetailInform";
 import MainButton from "shared/componets/MainButton/MainButton";
 import Categories from "shared/componets/Categories/Categories";
 
+import PropTypes from "prop-types";
+
 const CarItem = ({ data }) => {
   const dispatch = useDispatch();
   const favoriteItems = useSelector(selectFavoriteCars);
@@ -125,6 +127,27 @@ const CarItem = ({ data }) => {
       </div>
     </div>
   );
+};
+
+CarItem.propTypes = {
+  data: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    gallery: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+    location: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    adults: PropTypes.number.isRequired,
+    details: PropTypes.shape({
+      transmission: PropTypes.string.isRequired,
+      engine: PropTypes.string.isRequired,
+      kitchen: PropTypes.number,
+      beds: PropTypes.number,
+      airConditioner: PropTypes.number,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default CarItem;

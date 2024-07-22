@@ -8,6 +8,8 @@ import { icons as sprite } from "shared/icons/index";
 import { useState } from "react";
 import clsx from "clsx";
 
+import PropTypes from "prop-types";
+
 const DetailInform = ({ db }) => {
   const [activeComponent, setActiveComponent] = useState("features");
 
@@ -71,6 +73,16 @@ const DetailInform = ({ db }) => {
       </CustomScrollWrapper>
     </>
   );
+};
+
+DetailInform.propTypes = {
+  db: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+    location: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default DetailInform;

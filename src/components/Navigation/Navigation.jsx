@@ -37,7 +37,7 @@ const Navigation = () => {
   };
 
   return (
-    <>
+    <header className={style.header}>
       {(isDesktop || isTablet) && (
         <nav ref={navRef} className={style.navigation}>
           <NavLink className={style.navLink} to="/">
@@ -60,7 +60,7 @@ const Navigation = () => {
           <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
         </nav>
       )}
-    </>
+    </header>
   );
 };
 

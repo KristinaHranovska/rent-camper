@@ -1,9 +1,11 @@
+.header {
+    padding: 5px 16px;
+}
+
 .navigation {
     position: relative;
     height: 60px;
     display: flex;
-
-    margin-bottom: 10px;
 }
 
 .logo {
@@ -12,11 +14,13 @@
 }
 
 @media screen and (min-width: 768px) {
+    .header {
+        padding: 10px 16px;
+    }
+
     .navigation {
         align-items: center;
         justify-content: space-between;
-
-        margin-bottom: 0;
     }
 
     .logo {

@@ -1,4 +1,5 @@
 import style from "./Hamburger.module.css";
+import PropTypes from "prop-types";
 
 const Hamburger = ({ active, toggleMenu }) => {
   return (
@@ -30,6 +31,11 @@ const Hamburger = ({ active, toggleMenu }) => {
       </svg>
     </div>
   );
+};
+
+Hamburger.propTypes = {
+  active: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default Hamburger;

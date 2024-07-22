@@ -11,14 +11,14 @@ const CatalogPage = () => {
       <Helmet>
         <title>Catalog</title>
       </Helmet>
-      <section className={style.container}>
-        <Navigation />
+      <Navigation />
+      <main className={style.container}>
         <div className={style.catalogContainer}>
           <CamperFilters />
           <CamperCars />
           <ButtonToTopScroll />
         </div>
-      </section>
+      </main>
     </>
   );
 };

@@ -3,6 +3,8 @@ import Features from "components/Features/Features";
 
 import style from "./CarFeatures.module.css";
 
+import PropTypes from "prop-types";
+
 const CarFeatures = ({ data }) => {
   return (
     <div className={style.container}>
@@ -10,6 +12,10 @@ const CarFeatures = ({ data }) => {
       <BookForm />
     </div>
   );
+};
+
+CarFeatures.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default CarFeatures;

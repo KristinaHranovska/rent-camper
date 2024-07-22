@@ -3,6 +3,8 @@ import style from "./Reviews.module.css";
 import { Rating } from "@mui/material";
 import { useMedia } from "hooks/useMedia";
 
+import PropTypes from "prop-types";
+
 const Reviews = ({ db }) => {
   const { isDesktop } = useMedia();
 
@@ -37,6 +39,18 @@ const Reviews = ({ db }) => {
   ) : (
     content
   );
+};
+
+Reviews.propTypes = {
+  db: PropTypes.shape({
+    reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        reviewer_name: PropTypes.string.isRequired,
+        reviewer_rating: PropTypes.number.isRequired,
+        comment: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
 };
 
 export default Reviews;

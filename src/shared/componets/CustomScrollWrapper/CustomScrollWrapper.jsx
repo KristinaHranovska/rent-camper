@@ -3,6 +3,8 @@ import "./CustomScrollWrapper.css";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import clsx from "clsx";
 
+import PropTypes from "prop-types";
+
 const CustomScrollWrapper = ({ children, wrapClassName }) => {
   return (
     <OverlayScrollbarsComponent
@@ -16,6 +18,11 @@ const CustomScrollWrapper = ({ children, wrapClassName }) => {
       {children}
     </OverlayScrollbarsComponent>
   );
+};
+
+CustomScrollWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  wrapClassName: PropTypes.string,
 };
 
 export default CustomScrollWrapper;

@@ -2,6 +2,8 @@ import { capitalizeFirstLetter } from "helpers/constants";
 import style from "./Features.module.css";
 import Categories from "shared/componets/Categories/Categories";
 
+import PropTypes from "prop-types";
+
 const Features = ({ db }) => {
   const categoriesData = [
     {
@@ -158,6 +160,35 @@ const Features = ({ db }) => {
       </ul>
     </div>
   );
+};
+
+Features.propTypes = {
+  db: PropTypes.shape({
+    adults: PropTypes.number.isRequired,
+    details: PropTypes.shape({
+      transmission: PropTypes.string.isRequired,
+      airConditioner: PropTypes.number,
+      engine: PropTypes.string.isRequired,
+      kitchen: PropTypes.number,
+      beds: PropTypes.number,
+      CD: PropTypes.number,
+      radio: PropTypes.number,
+      hob: PropTypes.number,
+      shower: PropTypes.number,
+      TV: PropTypes.number,
+      toilet: PropTypes.number,
+      freezer: PropTypes.number,
+      microwave: PropTypes.number,
+      gas: PropTypes.number,
+      water: PropTypes.number,
+    }).isRequired,
+    form: PropTypes.string,
+    length: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    tank: PropTypes.number,
+    consumption: PropTypes.number,
+  }).isRequired,
 };
 
 export default Features;

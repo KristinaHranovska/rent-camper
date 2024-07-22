@@ -4,6 +4,8 @@ import "./ModalWindow.css";
 import { useEffect } from "react";
 import { useModalContext } from "context/useModalContext";
 
+import PropTypes from "prop-types";
+
 Modal.setAppElement("#root");
 
 const ModalWindow = ({ isOpen, children }) => {
@@ -36,6 +38,11 @@ const ModalWindow = ({ isOpen, children }) => {
       {children}
     </Modal>
   );
+};
+
+ModalWindow.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default ModalWindow;

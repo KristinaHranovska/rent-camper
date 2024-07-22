@@ -1,6 +1,8 @@
 import NavList from "shared/componets/NavList/NavList";
 import style from "./Menu.module.css";
 
+import PropTypes from "prop-types";
+
 const Menu = ({ isOpen, toggleMenu }) => {
   return (
     <div
@@ -12,6 +14,11 @@ const Menu = ({ isOpen, toggleMenu }) => {
       </div>
     </div>
   );
+};
+
+Menu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default Menu;

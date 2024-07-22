@@ -10,11 +10,11 @@ const FavoritePage = () => {
       <Helmet>
         <title>Favorite</title>
       </Helmet>
-      <section className={`${style.container} `}>
-        <Navigation />
+      <Navigation />
+      <main className={`${style.container} `}>
         <FavoriteList />
         <ButtonToTopScroll />
-      </section>
+      </main>
     </>
   );
 };

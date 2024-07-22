@@ -1,5 +1,7 @@
 import style from "./DetailMainInform.module.css";
 
+import PropTypes from "prop-types";
+
 const DetailMainInform = ({ data }) => {
   return (
     <div className={style.blockWrap}>
@@ -14,6 +16,14 @@ const DetailMainInform = ({ data }) => {
       <p className={style.textDescription}>{data.description}</p>
     </div>
   );
+};
+
+DetailMainInform.propTypes = {
+  data: PropTypes.shape({
+    gallery: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default DetailMainInform;
