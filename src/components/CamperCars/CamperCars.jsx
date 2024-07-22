@@ -89,7 +89,13 @@ const CamperCars = () => {
           ) : (
             <div className={style.notFoundtBlock}>
               <p className={style.notFound}>Unfortunately, nothing was found</p>
-              <img src={logo} alt="pictures" />
+              <img
+                src={logo}
+                alt="pictures"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
             </div>
           )}
           {visibleCars.length < camperCars.length &&

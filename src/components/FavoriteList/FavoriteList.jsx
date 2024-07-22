@@ -91,6 +91,9 @@ const FavoriteList = () => {
                         className={style.favoriteImg}
                         src={car.gallery[0]}
                         alt={car.name}
+                        width="300"
+                        height="200"
+                        loading="lazy"
                       />
                     </div>
 
@@ -131,7 +134,14 @@ const FavoriteList = () => {
             Your collection of favorite camper vans is empty. Add a few models
             to start your journey!
           </h2>
-          <img className={style.mainPicture} src={mainPicture} alt="logo" />
+          <img
+            className={style.mainPicture}
+            src={mainPicture}
+            alt="logo"
+            width="300"
+            height="200"
+            loading="lazy"
+          />
           <NavLink className={style.navLink} to="/catalog">
             <MainButton title="Return to the catalog" btnType="main" />
           </NavLink>

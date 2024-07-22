@@ -69,7 +69,14 @@ const CarItem = ({ data }) => {
 
   return (
     <div className={style.cardCar}>
-      <img className={style.cardImg} src={data.gallery[0]} alt={data.name} />
+      <img
+        className={style.cardImg}
+        src={data.gallery[0]}
+        alt={data.name}
+        width="300"
+        height="200"
+        loading={"lazy"}
+      />
 
       <div>
         <div className={style.carInfoThumb}>

@@ -8,7 +8,14 @@ const DetailMainInform = ({ data }) => {
       <ul className={style.listImages}>
         {data.gallery.map((img, index) => (
           <li key={index}>
-            <img className={style.cardImg} src={img} alt={data.name} />
+            <img
+              className={style.cardImg}
+              src={img}
+              alt={data.name}
+              width="300"
+              height="200"
+              loading="lazy"
+            />
           </li>
         ))}
       </ul>
