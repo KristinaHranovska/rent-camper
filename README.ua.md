@@ -59,6 +59,13 @@
 
 Кожна з цих технологій відіграє важливу роль у створенні та вдосконаленні функціональності нашого сайту, сприяючи відмінному користувацькому досвіду та стабільній продуктивності.
 
+## Посилання
+
+- [GitHub Repository BackEnd](https://github.com/KristinaHranovska/rent-camper-api)
+- [GitHub Repository FronEnd](https://github.com/KristinaHranovska/rent-camper)
+- [Swagger UI](https://rent-camper-api.onrender.com/api-docs)
+- [Live link](https://rent-camper.vercel.app/)
+
 ## Ліцензія
 
 Цей проект ліцензовано на умовах ліцензії MIT.

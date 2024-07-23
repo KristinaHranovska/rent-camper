@@ -59,6 +59,13 @@ Our site leverages a diverse set of technologies and libraries to deliver a poli
 
 Each of these technologies is instrumental in crafting and refining the functionality of our site, contributing to a superior user experience and robust performance.
 
+## Links
+
+- [GitHub Repository BackEnd](https://github.com/KristinaHranovska/rent-camper-api)
+- [GitHub Repository FronEnd](https://github.com/KristinaHranovska/rent-camper)
+- [Swagger UI](https://rent-camper-api.onrender.com/api-docs)
+- [Live link](https://rent-camper.vercel.app/)
+
 ## License
 
 This project is licensed under the MIT License.
