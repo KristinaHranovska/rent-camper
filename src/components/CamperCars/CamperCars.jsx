@@ -5,7 +5,6 @@ import CarItem from "components/CarItem/CarItem";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
-import Loader from "shared/componets/Loader/Loader";
 import { gsap } from "gsap";
 import { getCar, getCarMore } from "@redux/favorite/operation";
 import {
@@ -14,6 +13,7 @@ import {
   selectLoading,
   selectTotalPages,
 } from "@redux/favorite/selectors";
+import Loader from "shared/componets/Loader/Loader";
 
 const CamperCars = () => {
   const listRef = useRef(null);
@@ -24,6 +24,7 @@ const CamperCars = () => {
   const totalPages = useSelector(selectTotalPages);
   const [visibleCars, setVisibleCars] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoadingMore, setIsLoadingMore] = useState(false); // State for loader on load more
 
   useEffect(() => {
     dispatch(getCar({ page: 1, limit: 4, filters }));
@@ -31,7 +32,10 @@ const CamperCars = () => {
 
   useEffect(() => {
     if (page > 1) {
-      dispatch(getCarMore({ page, limit: 4, filters }));
+      setIsLoadingMore(true);
+      dispatch(getCarMore({ page, limit: 4, filters })).then(() => {
+        setIsLoadingMore(false);
+      });
     }
   }, [dispatch, page, filters]);
 
@@ -103,13 +107,18 @@ const CamperCars = () => {
               />
             </div>
           )}
-          {!isLoading && page < totalPages && (
+          {!isLoading && page < totalPages && !isLoadingMore && (
             <MainButton
               title="Load more"
               btnType="load"
               className={style.loadMore}
               onClick={handleLoadMore}
             />
+          )}
+          {isLoadingMore && (
+            <div className={style.loaderContainer}>
+              <div className={style.loader}></div>
+            </div>
           )}
         </>
       )}
