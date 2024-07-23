@@ -20,14 +20,19 @@ const CamperCars = () => {
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectLoading);
   const [visibleCars, setVisibleCars] = useState([]);
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
-    dispatch(getCar({ page: 1, limit: 4 }));
+    dispatch(getCar({ page: 1, limit: 4 })).finally(() =>
+      setInitialLoad(false)
+    );
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getCamperMore(page));
+    if (page > 1) {
+      dispatch(getCamperMore(page));
+    }
   }, [dispatch, page]);
 
   useEffect(() => {
@@ -74,7 +79,7 @@ const CamperCars = () => {
 
   return (
     <div id="camperCars" className={style.container}>
-      {isLoading && page === 1 ? (
+      {isLoading && initialLoad ? (
         <Loader />
       ) : (
         <>

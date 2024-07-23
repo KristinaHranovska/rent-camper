@@ -43,7 +43,7 @@ const BookForm = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    const formattedDate = date ? date.toLocaleDateString("en-GB") : "";
+    const formattedDate = date ? date.toISOString() : "";
     setValue("date", formattedDate, { shouldValidate: true });
   };
 
@@ -92,7 +92,6 @@ const BookForm = () => {
                 className={`${style.formInput} ${
                   errors.date && style.errorDate
                 }`}
-                dateFormat="dd/MM/yyyy"
               />
               <svg className={`${style.iconCalendar}`}>
                 <use xlinkHref={`${sprite}#icon-calendar`} />

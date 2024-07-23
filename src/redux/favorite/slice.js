@@ -52,7 +52,6 @@ const carsSlice = createSlice({
             })
             .addCase(getCamperMore.fulfilled, (state, action) => {
                 state.isLoading = false;
-                console.log(action.payload);
                 state.cars = [...state.cars, ...action.payload];
             })
             .addCase(getCamperMore.rejected, (state) => {
