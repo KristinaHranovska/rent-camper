@@ -1,25 +1,30 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'helpers/axiosConfig';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const getCar = createAsyncThunk("camper/fetchAll",
-    async (_, thunkAPI) => {
+export const getCar = createAsyncThunk(
+    "cars/getCar",
+    async ({ page, limit, filters }, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`/rent?page=1&limit=4`);
-            return response.data;
+            const response = await axios.get("rent", {
+                params: { page, limit, ...filters },
+            });
+            return { data: response.data.data, totalPages: response.data.totalPages };
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+            return rejectWithValue(error.response.data);
         }
     }
 );
 
-export const getCamperMore = createAsyncThunk(
-    "camper/getMore",
-    async (page, thunkAPI) => {
+export const getCarMore = createAsyncThunk(
+    "cars/getCarMore",
+    async ({ page, limit, filters }, { rejectWithValue }) => {
         try {
-            const response = await axios.get("/rent?limit=4&page=" + page);
-            return response.data;
+            const response = await axios.get("rent", {
+                params: { page, limit, ...filters },
+            });
+            return { data: response.data.data, totalPages: response.data.totalPages };
         } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+            return rejectWithValue(error.response.data);
         }
     }
 );

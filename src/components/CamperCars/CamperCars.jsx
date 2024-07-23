@@ -1,42 +1,42 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCar, getCamperMore } from "@redux/favorite/operation";
-import {
-  selectCars,
-  selectFilters,
-  selectLoading,
-} from "@redux/favorite/selectors";
+
 import CarItem from "components/CarItem/CarItem";
 import MainButton from "shared/componets/MainButton/MainButton";
 import style from "./CamperCars.module.css";
 import { default as logo } from "assets/images/logo.webp";
 import Loader from "shared/componets/Loader/Loader";
 import { gsap } from "gsap";
+import { getCar, getCarMore } from "@redux/favorite/operation";
+import {
+  selectCars,
+  selectFilters,
+  selectLoading,
+  selectTotalPages,
+} from "@redux/favorite/selectors";
 
 const CamperCars = () => {
   const listRef = useRef(null);
   const dispatch = useDispatch();
-  const camperCars = useSelector(selectCars);
+  const cars = useSelector(selectCars);
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectLoading);
+  const totalPages = useSelector(selectTotalPages);
   const [visibleCars, setVisibleCars] = useState([]);
   const [page, setPage] = useState(1);
-  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
-    dispatch(getCar({ page: 1, limit: 4 })).finally(() =>
-      setInitialLoad(false)
-    );
-  }, [dispatch]);
+    dispatch(getCar({ page: 1, limit: 4, filters }));
+  }, [dispatch, filters]);
 
   useEffect(() => {
     if (page > 1) {
-      dispatch(getCamperMore(page));
+      dispatch(getCarMore({ page, limit: 4, filters }));
     }
-  }, [dispatch, page]);
+  }, [dispatch, page, filters]);
 
   useEffect(() => {
-    let filteredCars = camperCars;
+    let filteredCars = cars;
 
     if (filters.location) {
       filteredCars = filteredCars.filter((car) =>
@@ -57,7 +57,7 @@ const CamperCars = () => {
     }
 
     setVisibleCars(filteredCars);
-  }, [camperCars, filters]);
+  }, [cars, filters]);
 
   useEffect(() => {
     if (listRef.current) {
@@ -79,7 +79,7 @@ const CamperCars = () => {
 
   return (
     <div id="camperCars" className={style.container}>
-      {isLoading && initialLoad ? (
+      {isLoading && page === 1 ? (
         <Loader />
       ) : (
         <>
@@ -103,7 +103,7 @@ const CamperCars = () => {
               />
             </div>
           )}
-          {!isLoading && camperCars.length % 4 === 0 && (
+          {!isLoading && page < totalPages && (
             <MainButton
               title="Load more"
               btnType="load"

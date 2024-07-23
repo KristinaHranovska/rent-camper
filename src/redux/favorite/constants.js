@@ -1,12 +1,12 @@
-export const initialStateVan = {
+export const initialStateCar = {
     cars: [],
-    page: 1,
+    totalPages: 1,
     isLoading: false,
     error: null,
     favoriteCar: [],
     filters: {
         location: '',
-        details: [],
+        details: {},
         form: ''
     }
 }

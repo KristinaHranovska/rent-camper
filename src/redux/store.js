@@ -10,7 +10,7 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import { carsReducer } from './favorite/slice';
+import { carReducer } from './favorite/slice';
 import { bookingReducer } from './booking/bookingSlice';
 import { themeReducer } from './theme/themeSlice';
 
@@ -29,7 +29,7 @@ const themePersistConfig = {
 export const store = configureStore({
     reducer: {
         theme: persistReducer(themePersistConfig, themeReducer),
-        favorite: persistReducer(favoritePersistConfig, carsReducer),
+        favorite: persistReducer(favoritePersistConfig, carReducer),
         booking: bookingReducer,
     },
 

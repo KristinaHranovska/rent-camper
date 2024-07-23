@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialStateVan } from "./constants";
-import { getCamperMore, getCar } from "./operation";
+import { initialStateCar } from "./constants";
+import { getCarMore, getCar } from "./operation";
 
-const carsSlice = createSlice({
-    name: 'camper',
-    initialState: initialStateVan,
-
+const carSlice = createSlice({
+    name: 'car',
+    initialState: initialStateCar,
     reducers: {
         addFavorite: {
             reducer(state, action) {
-                state.favoriteCar.push(action.payload)
+                state.favoriteCar.push(action.payload);
             },
             prepare(values) {
                 return {
@@ -28,10 +27,9 @@ const carsSlice = createSlice({
             state.filters = action.payload;
         },
         resetFilters: (state) => {
-            state.filters = initialStateVan.filters;
+            state.filters = initialStateCar.filters;
         }
     },
-
     extraReducers: (builder) => {
         builder
             .addCase(getCar.pending, (state) => {
@@ -39,27 +37,27 @@ const carsSlice = createSlice({
             })
             .addCase(getCar.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.error = null;
-                state.cars = [...action.payload];
+                state.cars = action.payload.data;
+                state.totalPages = action.payload.totalPages;
             })
             .addCase(getCar.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             })
-            .addCase(getCamperMore.pending, (state) => {
+            .addCase(getCarMore.pending, (state) => {
                 state.isLoading = true;
-                state.error = false;
             })
-            .addCase(getCamperMore.fulfilled, (state, action) => {
+            .addCase(getCarMore.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.cars = [...state.cars, ...action.payload];
+                state.cars = [...state.cars, ...action.payload.data];
+                state.totalPages = action.payload.totalPages;
             })
-            .addCase(getCamperMore.rejected, (state) => {
+            .addCase(getCarMore.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = true;
-            })
+                state.error = action.payload;
+            });
     }
-})
+});
 
-export const carsReducer = carsSlice.reducer;
-export const { addFavorite, deleteFavorite, setFilters, resetFilters } = carsSlice.actions;
+export const carReducer = carSlice.reducer;
+export const { addFavorite, deleteFavorite, setFilters, resetFilters } = carSlice.actions;

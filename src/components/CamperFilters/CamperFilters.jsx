@@ -1,15 +1,15 @@
-import { formValuesVehicle } from "helpers/constants";
 import { useForm } from "react-hook-form";
-import MainButton from "shared/componets/MainButton/MainButton";
-import style from "./CamperFilters.module.css";
-import { icons as sprite } from "shared/icons/index";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilters, setFilters } from "@redux/favorite/slice";
 import { selectFilters } from "@redux/favorite/selectors";
-import clsx from "clsx";
+import MainButton from "shared/componets/MainButton/MainButton";
+import style from "./CamperFilters.module.css";
+import { icons as sprite } from "shared/icons/index";
 import { scrollToElementById } from "helpers/scrollToElementById";
 import { gsap } from "gsap";
+import clsx from "clsx";
+import { formValuesVehicle } from "helpers/constants";
 
 const CamperFilters = () => {
   const homeTitleRef = useRef(null);
@@ -61,13 +61,14 @@ const CamperFilters = () => {
       return acc;
     }, {});
 
-    dispatch(
-      setFilters({
-        location: data.location,
-        details: selectedDetails,
-        form: Object.keys(radioItems).find((key) => radioItems[key]),
-      })
-    );
+    const appliedFilters = {
+      location: data.location,
+      details: selectedDetails,
+      form: data.form,
+    };
+
+    console.log("Applied Filters:", appliedFilters);
+    dispatch(setFilters(appliedFilters));
     reset();
     setCheckedItems({});
     setRadioItems({});
